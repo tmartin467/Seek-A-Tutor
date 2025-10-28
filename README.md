@@ -21,7 +21,7 @@ A passion project created to optimize tutor searches and administrative oversigh
 This project is a static web application and requires only a web browser to run.
 
 ### For end-users:
-1. Clone the repository: `git clone [repository_url]`
+1. Clone the repository: `git clone https://github.com/tmartin467/Seek-A-Tutor.git`
 2. Navigate to the directory: `cd Seek-A-Tutor`
 3. Run Locally: Open the main application file, SeekATutor.html, directly in your web browser (e.g., Google Chrome, Firefox).
 
