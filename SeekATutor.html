@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seek A Tutor</title>
+    <link rel="icon" type="image/jpeg" href="Dol_Cursor.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* White Background */
+            background-color: #fffdfd;
+        }
+
+        /* START: WATERMARK STYLES (CORRECTLY PLACED) */
+        #watermark {
+            /* Fixes the element to the viewport */
+            position: fixed;
+            /* New positioning for bottom right corner */
+            bottom: 10px;
+            right: 10px;
+
+            /* Set a small fixed size for the watermark element (e.g., 60px) */
+            width: 60px;
+            height: 60px;
+
+            /* Ensure it is behind all content */
+            z-index: -1000;
+            /* Makes it non-interactive so it doesn't block clicks */
+            pointer-events: none;
+            /* Set to 1.0 (100%) for full visibility testing */
+            opacity: 0.5;
+
+            /* Image Watermark Implementation */
+            /* IMPORTANT: Replace 'Dol_Cursor.png' with your actual watermark PNG filename! */
+            background-image: url('Dol_Cursor.png');
+            background-size: contain;
+            /* Scales the image to fit within the 60x60 box */
+            background-repeat: no-repeat;
+            background-position: center;
+
+            /* Removing old text/gradient properties */
+            transform: none;
+        }
+
+        /* END: WATERMARK STYLES */
+
+        /*
+        * REMOVED: #tutorImagePopover styles are removed as the image is now static.
+        */
+
+        /* NEW: Static image styling for the tutor card */
+        .tutor-card-image {
+            width: 90px;
+            /* Reduced size for static display */
+            height: 120px;
+            object-fit: cover;
+            /* Ensure the image is contained */
+            margin-left: 10px;
+            /* Space between name and image */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            /* Small shadow to make it pop */
+        }
+
+        .day-column {
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Ensure the schedule grid spans correctly on large screens for both filtered and unfiltered views */
+        @media (min-width: 1024px) {
+            #admin-forms-container {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            /* Add a class for the expanded single day view */
+            .single-day-expanded {
+                /* On large screens, this ensures the single column uses the full container width */
+                grid-template-columns: minmax(0, 1fr) !important;
+            }
+        }
+
+        /* START: Legend Styles */
+        .color-box {
+            display: inline-block;
+            width: 12px;
+            /* Very thin box */
+            height: 12px;
+            /* Smallest box */
+            border: 1px solid #333;
+            vertical-align: middle;
+            margin-right: 4px;
+        }
+
+        /* Updated colors to match the card backgrounds (100 shades) */
+        .green-legend {
+            background-color: #d1fae5;
+            border-color: #10b981;
+        }
+
+        /* Matches bg-green-100 */
+        .yellow-legend {
+            background-color: #fffde7;
+            border-color: #f59e0b;
+        }
+
+        /* Matches bg-yellow-100 */
+        .red-legend {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+
+        /* Matches bg-red-100 for Not Available */
+        .blue-legend {
+            background-color: #eff6ff;
+            border-color: #3b82f6;
+        }
+
+        /* Matches bg-blue-100 for Upcoming Today */
+        .absent-legend {
+            background-color: #bea1dd;
+            border-color: #7ca5e2;
+        }
+
+        /* Matches bg-red-200 opacity 60 for Absent Today */
+
+        .availability-legend {
+            font-size: 0.875rem;
+            /* Smaller text */
+            color: #436ba8;
+            /* Gray-600 */
+            padding: 8px 0;
+            border-bottom: 1px solid #746895;
+            /* Light separator */
+        }
+
+        .availability-legend strong {
+            font-weight: 600;
+            color: #1f2937;
+            /* Gray-800 */
+        }
+
+        /* END: Legend Styles */
+
+        /* Custom style for magenta text after time blocks to stand out */
+        .text-magenta-bold {
+            color: #ff00ff;
+            /* Pure magenta color */
+            font-weight: 700;
+            /* Optional: Make the text bold to stand out */
+        }
+    </style>
+</head>
+
+<body class="text-gray-800">
+
+    <div id="watermark" aria-hidden="true"></div>
+
+    <div class="container mx-auto p-4 md:p-6 lg:p-8">
+
+        <header class="mb-4 text-center">
+            <h1 class="text-4xl font-bold text-gray-900">Seek A Tutor</h1>
+            <p class="text-lg text-gray-600 mt-2">Use the filters below to find a tutor that will suit your needs!
+                We do our best to keep our schedule accurate, but we may have discrepancies. To reconfirm, please call
+                the LRC at: 805-437-8409</p>
+        </header>
+
+        <div class="availability-legend max-w-4xl mx-auto mb-1 flex justify-center flex-wrap gap-x-3 gap-y-2">
+            <p class="text-sm italic">
+                Status is valid for the <strong>Current</strong> Day only:
+            </p>
+            <span class="flex items-center">
+                <div class="color-box green-legend"></div>
+                <strong class="text-green-600">🟢 Available Now</strong>
+            </span>
+            <span class="flex items-center">
+                <div class="color-box yellow-legend"></div>
+                <strong class="text-yellow-600">⚠️ Clocking Out Soon</strong>
+            </span>
+            <span class="flex items-center">
+                <div class="color-box blue-legend"></div>
+                <strong class="text-blue-600">🟦 Upcoming Today</strong>
+            </span>
+            <span class="flex items-center">
+                <div class="color-box red-legend"></div>
+                <strong class="text-red-600">❌ Not Available</strong>
+            </span>
+            <span class="flex items-center">
+                <div class="color-box absent-legend"></div>
+                <strong class="text-red-800">❌ Absent Today</strong>
+            </span>
+        </div>
+
+        <section id="schedule" class="bg-white p-6 rounded-2xl shadow-sm mb-8">
+            <div class="flex flex-wrap justify-between items-start mb-4 gap-4">
+                <h2 class="text-2xl font-semibold text-gray-900">Weekly Schedule</h2>
+
+                <div class="flex flex-wrap items-center gap-4">
+
+                    <div class="flex items-center space-x-2">
+                        <label for="subjectFilter" class="text-sm font-medium whitespace-nowrap">Search by
+                            Course:</label>
+                        <input type="text" id="subjectFilter" placeholder="e.g., MATH 150 or BIOL"
+                            class="w-40 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block p-2">
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <label for="tutorFilter" class="text-sm font-medium whitespace-nowrap">Filter by Tutor:</label>
+                        <select id="tutorFilter"
+                            class="w-40 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block p-2">
+                            <option value="all">Show All Tutors</option>
+                        </select>
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <label for="dayFilter" class="text-sm font-medium whitespace-nowrap">Filter by Day:</label>
+                        <select id="dayFilter"
+                            class="w-40 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block p-2">
+                            <option value="all">Show All Days</option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div id="schedule-grid" class="mt-4 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-7 gap-1">
+            </div>
+
+        </section>
+
+        <div class="max-w-4xl mx-auto p-4 text-center mt-4 border-t border-gray-200 pt-4">
+
+            <button onclick="promptAdminLogin()" id="adminLoginButton"
+                class="px-6 py-2 bg-gray-600 text-white font-medium rounded hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2">
+                Admin Access: Manage Absences & Shifts
+            </button>
+
+            <div id="admin-tools" class="hidden mt-4 p-4 bg-gray-100 rounded-lg shadow-inner">
+                <h3 class="text-xl font-bold text-red-700 mb-4">Administrative Tools</h3>
+
+                <div class="mb-4 p-3 bg-red-50 border border-red-200 rounded-md">
+                    <p class="text-sm font-semibold text-red-700 mb-2">1. Mark Tutors Absent Today (Type Names,
+                        Auto-Clears Daily)</p>
+                    <div class="flex flex-col md:flex-row items-stretch space-y-2 md:space-y-0 md:space-x-2 mb-2">
+                        <input type="text" id="absentTutorInput"
+                            placeholder="Enter full names, separated by comma (e.g., Tahja Martin, Ian Schwartz)"
+                            class="flex-grow min-w-[200px] p-2 border border-red-300 rounded text-sm focus:ring-red-500 focus:border-red-500">
+                        <button onclick="updateAbsentTutors()"
+                            class="px-4 py-2 bg-red-600 text-white font-medium rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+                            Update Absent List
+                        </button>
+                    </div>
+                    <button onclick="clearAbsentTutors()"
+                        class="w-full px-4 py-2 bg-gray-400 text-white font-medium rounded hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 mt-2">
+                        Clear All Absences Now
+                    </button>
+                </div>
+
+
+                <div class="mb-4 p-3 bg-teal-50 border border-teal-200 rounded-md">
+                    <p class="text-sm font-semibold text-teal-700 mb-2">2. Add/Update Temporary Shift (Applies to
+                        Current Day Only)</p>
+                    <p class="text-xs text-teal-600 mb-2 font-medium">Please enter Start and Stop times exactly (e.g.,
+                        2:45 PM). Courses will be pulled automatically from the tutor's regular schedule. This shift
+                        will ONLY show on the current day's schedule.</p>
+                    <div class="grid grid-cols-2 gap-2">
+                        <select id="tempShiftInputName" onchange="handleTempShiftTutorSelect()"
+                            class="p-2 border border-teal-300 rounded text-sm col-span-2">
+                            <option value="" disabled selected>Select Tutor</option>
+                        </select>
+
+                        <input type="hidden" id="tempShiftInputCoursesHidden" value="">
+
+                        <input type="text" id="tempShiftStartTime" placeholder="Start Time (e.g., 2:45 PM)"
+                            class="p-2 border border-teal-300 rounded text-sm">
+
+                        <input type="text" id="tempShiftStopTime" placeholder="Stop Time (e.g., 3:45 PM)"
+                            class="p-2 border border-teal-300 rounded text-sm">
+                    </div>
+                    <button onclick="addTempShift()"
+                        class="w-full px-4 py-2 bg-teal-600 text-white font-medium rounded hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 mt-2">
+                        Add Temp Shift
+                    </button>
+                </div>
+
+                <div class="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-md">
+                    <p class="text-sm font-semibold text-blue-700 mb-2">3. Add/Update Tutor Note (Current Day
+                        Persistence)</p>
+                    <div class="flex space-x-2 mb-2">
+                        <select id="noteTutorSelect"
+                            class="p-2 border border-blue-300 rounded text-sm w-1/3 min-w-[100px]">
+                            <option value="" disabled selected>Select Tutor</option>
+                        </select>
+                        <input type="text" id="tutorNoteInput" placeholder="Enter Note (e.g., Review Session in Annex)"
+                            class="p-2 border border-blue-300 rounded text-sm flex-grow">
+                    </div>
+                    <button onclick="saveTutorNote()"
+                        class="w-full px-4 py-2 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        Save Tutor Note
+                    </button>
+                    <p class="text-xs text-blue-500 mt-1">Note: This note will automatically clear at midnight but will
+                        remain visible even after the tutor's shift for the day has ended.</p>
+                </div>
+
+                <div class="flex justify-between gap-3 pt-2">
+                    <button onclick="clearTempShifts()"
+                        class="flex-1 px-4 py-3 bg-yellow-600 text-white font-medium rounded hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2">
+                        4a. Clear All Temporary Shifts
+                    </button>
+                    <button onclick="clearNotes()"
+                        class="flex-1 px-4 py-3 bg-red-500 text-white font-medium rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2">
+                        4b. Clear All Saved Notes
+                    </button>
+                </div>
+
+                <p class="text-xs text-red-500 mt-3">Note: Temporary Shift and Notes cleanup is irreversible.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="adminModal" class="fixed inset-0 bg-gray-900 bg-opacity-75 hidden z-50 flex items-center justify-center">
+        <div class="bg-white p-6 rounded-lg shadow-xl w-80">
+            <h3 class="text-xl font-bold mb-4 text-gray-800">Admin Passcode Required</h3>
+            <input type="password" id="adminPasscodeInput" placeholder="Enter Passcode"
+                class="w-full p-3 border border-gray-300 rounded focus:ring-teal-500 focus:border-teal-500 text-lg mb-4"
+                onkeydown="if(event.key === 'Enter') checkAdminLogin()">
+            <div class="flex justify-end space-x-2">
+                <button onclick="document.getElementById('adminModal').classList.add('hidden')"
+                    class="px-4 py-2 bg-gray-300 text-gray-800 font-medium rounded hover:bg-gray-400">
+                    Cancel
+                </button>
+                <button onclick="checkAdminLogin()"
+                    class="px-4 py-2 bg-teal-600 text-white font-medium rounded hover:bg-teal-700">
+                    Login
+                </button>
+            </div>
+            <p id="loginError" class="text-red-500 text-sm mt-3 hidden"></p>
+        </div>
+    </div>
+    <script>
+        let allTutors = [];
+        const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+        // ==========================================================
+        // **MASTER ADMIN PASSCODE** (Controls all admin access)
+        // ==========================================================
+        const ADMIN_PASSCODE = "AdMin2025?!";
+
+        // Global Set to store names of absent tutors, loaded from localStorage (Absence Management)
+        let absentTutors = loadAbsentTutorsFromStorage();
+
+        // New global array for temporary shifts, loaded from localStorage (Temp Shift Management)
+        let tempShifts = loadTempShiftsFromStorage();
+
+        // New global object for tutor notes, loaded from localStorage (Notes Management)
+        let tutorNotes = loadTutorNotesFromStorage();
+
+        // ==========================================================
+        // TUTOR IMAGE MAPPING (NOW DYNAMICALLY POPULATED FROM JSON)
+        // ==========================================================
+        let tutorImageMap = {}; // Changed to `let` and initialized empty
+
+
+        // ==========================================================
+        // TUTOR IMAGE POPOVER LOGIC (REMOVED AND REPLACED)
+        // ==========================================================
+
+        // REMOVED: showTutorImage function
+        // REMOVED: hideTutorImage function
+
+        // ==========================================================
+        // WATERMARK LOGIC (Restored Simple Version)
+        // ==========================================================
+
+        /**
+         * Helper function to apply styles to the watermark element.
+         * Note: Status display logic is omitted to keep it clean.
+         */
+        function applyWatermark(element, config) {
+            element.style.backgroundImage = `url('${config.image}')`;
+            element.style.backgroundRepeat = config.repeat || 'repeat';
+            element.style.backgroundSize = config.size || '500px';
+            element.style.opacity = config.opacity || '0.1';
+
+            // Log to console for confirmation
+            console.log(`[Watermark] Applying: ${config.message}`);
+        }
+
+        function updateWatermarkForHolidays() {
+            const watermark = document.getElementById('watermark');
+            if (!watermark) return; // Safety check
+
+            // Default Watermark Style (Dol_Cursor.png)
+            const defaultWatermark = {
+                image: "Dol_Cursor.png", // Always use the default image
+                repeat: 'no-repeat',
+                size: '60px',
+                opacity: '0.5',
+                message: "Default Watermark (Dol_Cursor.png)"
+            };
+
+            // Apply the default watermark unconditionally
+            applyWatermark(watermark, defaultWatermark);
+        }
+
+        // ==========================================================
+        // DATE & TIME HELPERS
+        // ==========================================================
+
+        /**
+         * Gets today's date formatted as YYYY-MM-DD.
+         */
+        function getTodayDateString() {
+            const now = new Date();
+            // Format as YYYY-MM-DD for easy comparison
+            return now.toISOString().split('T')[0];
+        }
+
+        function getTodayName() {
+            // Using the actual current date for live day filtering
+            const todayName = new Date().toLocaleDateString('en-US', {
+                weekday: 'long'
+            });
+            if (daysOfWeek.includes(todayName)) {
+                return todayName;
+            }
+            return 'all'; // Should default to 'all' if day name is weird or not recognized
+        }
+
+        /**
+         * Converts a string to Title Case (e.g., "ryan moses" -> "Ryan Moses").
+         * Used for consistent display of absent tutor names.
+         */
+        function toTitleCase(str) {
+            if (!str) return '';
+
+            // Define a set of common course code acronyms that should always be uppercase
+            // Added commonly long acronyms and shorter subject codes
+            const acronyms = new Set(['EPE', 'MATH', 'ACCT', 'BIOL', 'CHEM', 'COMP', 'ECON', 'ENGL', 'HIST', 'PHIL', 'PSYC', 'SPAN', 'PHYS', 'CJ', 'COMM', 'ESRM', 'BUS', 'LRC', 'CI', 'BAM']);
+
+            return str.toLowerCase().split(' ').map((word) => {
+                // Ignore any surrounding parentheses or punctuation for the acronym check
+                const cleanWordUpper = word.replace(/[^A-Z0-9]/gi, '').toUpperCase();
+
+                // 1. If the word is a number (e.g., "150") or a known acronym (e.g., "EPE") or a short subject code (e.g., "BUS")
+                // 2. We check for a common subject code pattern (2-4 uppercase letters followed by numbers, e.g., 'MATH150')
+                if (acronyms.has(cleanWordUpper) || /\d/.test(word) || /^[A-Z]{2,4}\d+/.test(cleanWordUpper)) {
+                    // Force the word to its original uppercase form (e.g., MATH, EPE, 150)
+                    return word.toUpperCase();
+                }
+
+                // Otherwise, apply standard Title Case: capitalize the first letter
+                return word.charAt(0).toUpperCase() + word.slice(1);
+            }).join(' ');
+        }
+
+        /**
+         * Helper to create a Date object for today with the given time, regardless of AM/PM format inconsistencies
+         */
+        function createDateFromTime(timeStr, now) {
+            // Ensure the input time string is clean
+            let cleanTimeStr = timeStr.trim();
+
+            // Insert a space if it's missing (e.g., 8:00AM -> 8:00 AM) to help parsing
+            let formattedTimeStr = cleanTimeStr.replace(/(\d{1,2}:\d{2})(AM|PM)/i, '$1 $2');
+
+            const parts = formattedTimeStr.match(/(\d{1,2}:\d{2})\s*(AM|PM)/i);
+            if (!parts) return null;
+
+            const [time, period] = [parts[1], parts[2].toUpperCase()];
+            let [hours, minutes] = time.split(':').map(Number);
+
+            // Correctly handles 12 PM (noon) and 12 AM (midnight)
+            if (period === 'PM' && hours < 12) {
+                hours += 12;
+            } else if (period === 'AM' && hours === 12) {
+                hours = 0;
+            }
+
+            const date = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            date.setHours(hours, minutes, 0, 0);
+            return date;
+
+        }
+
+        /**
+        * Maps the status color and absence status to a numerical priority score.
+        * Lower scores indicate higher priority (tutors displayed at the top).
+        * Priority Order: Green (1) > Yellow (2) > Blue (3) > Red/Absent (4)
+        */
+        function getPriorityScore(statusColor, isAbsent) {
+            // Absent tutors are the lowest priority
+            if (isAbsent) return 4;
+
+            switch (statusColor) {
+                case 'green':
+                    return 1; // Available Now (Highest)
+                case 'yellow':
+                    return 2; // Clocking Out Soon
+                case 'blue':
+                    return 3; // Upcoming Today
+                case 'red':
+                default:
+                    return 4; // Not Available/Past shift (Lowest)
+            }
+        }
+
+        /**
+        * Maps the status color and absence status to a correlating emoji (with blue square for accessibility).
+        */
+        function getStatusEmoji(statusColor, isAbsent) {
+            if (isAbsent) return '❌'; // Red X for Absent Today
+            switch (statusColor) {
+                case 'green':
+                    return '🟢'; // Green Circle for Available Now
+                case 'yellow':
+                    return '⚠️'; // Warning sign for Clocking Out Soon
+                case 'blue':
+                    return '🟦'; // Blue Square for Upcoming Today (Accessibility)
+                case 'red':
+                default:
+                    return '❌'; // Red X for Not Available/Past Shift
+            }
+        }
+
+        // ==========================================================
+        // NEW: Conditional Magenta Text Formatting
+        // ==========================================================
+
+        /**
+         * Formats the schedule time string, applying magenta color to text after the time block
+         * if the string contains "(Zoom Only)", "in EOP", and "in BCC".
+         */
+        function formatScheduleTimeWithMagenta(timeString) {
+            const targetText = timeString.toLowerCase();
+
+            // 1. Check for all three conditions (case-insensitive)
+            const hasZoom = targetText.includes("(zoom only)");
+            const hasEOP = targetText.includes("in eop");
+            const hasBCC = targetText.includes("in bcc");
+
+            if (hasZoom && hasEOP && hasBCC) {
+                // 2. Split the string by the first occurrence of " - "
+                // The schedule time is typically "START TIME - STOP TIME DETAILS"
+                const parts = timeString.split(' - ');
+
+                if (parts.length >= 2) {
+                    // The time block is the first part (e.g., "1:00 PM").
+                    const timeBlock = parts[0];
+
+                    // The rest of the string is the optional details. Rejoin the remaining parts
+                    // in case the description itself contains " - "
+                    const optionalDetails = parts.slice(1).join(' - ');
+
+                    // 3. Wrap the optional details in the magenta span
+                    const coloredDetails = `<span class="text-magenta-bold">${optionalDetails}</span>`;
+
+                    // 4. Rejoin the full string with the colored details
+                    return `${timeBlock} - ${coloredDetails}`;
+                }
+            }
+
+            // If conditions are not met or parsing failed, return the original string
+            return timeString;
+        }
+
+
+        // ==========================================================
+        // ADMIN LOGIN FUNCTIONS
+        // ==========================================================
+
+        // Function to SHOW the modal
+        function promptAdminLogin() {
+            // CRITICAL: This line shows the modal by removing the 'hidden' class
+            document.getElementById('adminModal').classList.remove('hidden');
+
+            // Clear any previous input and error message
+            document.getElementById('adminPasscodeInput').value = '';
+            document.getElementById('loginError').classList.add('hidden');
+
+            // Focus the input field for immediate typing
+            document.getElementById('adminPasscodeInput').focus();
+        }
+
+        // Function to CHECK the password from the modal input
+        function checkAdminLogin() {
+            const enteredPass = document.getElementById('adminPasscodeInput').value;
+            const loginError = document.getElementById('loginError');
+
+            if (enteredPass === ADMIN_PASSCODE) {
+                // Access granted
+                document.getElementById('adminModal').classList.add('hidden'); // Hide modal
+                document.getElementById('admin-tools').classList.remove('hidden'); // Show admin panel
+
+                // Update the absence list input upon login
+                updateAbsentTutorInputOnLogin();
+
+            } else {
+                // Access denied
+                loginError.textContent = "Incorrect passcode. Access denied.";
+                loginError.classList.remove('hidden');
+                document.getElementById('adminPasscodeInput').value = ''; // Clear input on failure
+                document.getElementById('adminPasscodeInput').focus();
+            }
+        }
+
+        // ==========================================================
+        // ABSENCE MANAGEMENT
+        // ==========================================================
+
+        /**
+         * Loads the list of absent tutors from browser's localStorage.
+         * Auto-clears if the stored date does not match today's date.
+         */
+        function loadAbsentTutorsFromStorage() {
+            const storedData = localStorage.getItem('absentTutorData');
+            const todayDate = getTodayDateString();
+
+            if (storedData) {
+                try {
+                    const data = JSON.parse(storedData);
+
+                    // Check if the stored date matches today's date
+                    if (data.date === todayDate) {
+                        // Return the names if the date matches (stored in lowercase)
+                        const namesArray = data.names.map(name => name.toLowerCase());
+                        return new Set(namesArray);
+                    } else {
+                        // Date does not match, meaning the day has passed: clear the old data
+                        localStorage.removeItem('absentTutorData');
+                    }
+                } catch (e) {
+                    console.error("Error parsing stored absence data. Clearing bad data.", e);
+                    localStorage.removeItem('absentTutorData');
+                }
+            }
+            return new Set();
+        }
+
+        /**
+         * Saves the current list of absent tutors along with today's date to browser's localStorage.
+         */
+        function saveAbsentTutorsToStorage() {
+            const todayDate = getTodayDateString();
+            const dataToStore = {
+                date: todayDate,
+                names: Array.from(absentTutors) // Store the Set as an array of lowercase names
+            };
+            localStorage.setItem('absentTutorData', JSON.stringify(dataToStore));
+        }
+
+        /**
+         * Updates the absentTutors Set based on the text input, saves, and re-renders.
+         */
+        function updateAbsentTutors() {
+            const inputElement = document.getElementById('absentTutorInput');
+            const namesInput = inputElement.value.trim();
+
+            // Clear and prepare to repopulate
+            absentTutors.clear();
+
+            if (namesInput) {
+                // 1. Split by comma, trim whitespace
+                const namesArray = namesInput.split(',').map(name => name.trim()).filter(name => name.length > 0);
+                // 2. Standardize to lowercase for storage and easy lookup
+                const namesToStore = [...new Set(namesArray.map(name => name.toLowerCase()))];
+                absentTutors = new Set(namesToStore);
+            }
+
+            saveAbsentTutorsToStorage();
+            applyFilters();
+
+            if (absentTutors.size > 0) {
+                // Display names in Title Case for the alert (flexible handling)
+                const displayNames = Array.from(absentTutors).map(toTitleCase).join(', ');
+                alert(`ABSENT: ${absentTutors.size} tutor(s) marked absent for today: ${displayNames}`);
+            } else {
+                alert(`Absence list cleared. All tutors are now marked present.`);
+            }
+
+            // The input field keeps its value until the next update to allow editing,
+            // but we call the function to ensure the current state is reflected.
+            updateAbsentTutorInputOnLogin();
+        }
+
+        /**
+         * Clears the absentTutors Set, clears localStorage, then re-renders.
+         */
+        function clearAbsentTutors() {
+            if (confirm("Are you sure you want to clear ALL marked absences immediately?")) {
+                absentTutors.clear();
+                localStorage.removeItem('absentTutorData');
+
+                // Clear the text input field
+                document.getElementById('absentTutorInput').value = '';
+                applyFilters();
+                alert("All absences have been cleared.");
+            }
+        }
+
+        /**
+         * Populates the absence text input field with currently absent tutors on admin login.
+         */
+        function updateAbsentTutorInputOnLogin() {
+            // Transform the stored lowercase names back to Title Case for display in the input box
+            const displayNames = Array.from(absentTutors).map(toTitleCase).join(', ');
+            const inputElement = document.getElementById('absentTutorInput');
+            if (inputElement) {
+                inputElement.value = displayNames;
+            }
+        }
+
+        // ==========================================================
+        // TEMPORARY SHIFT MANAGEMENT (CURRENT DAY ONLY LOGIC)
+        // ==========================================================
+
+        /**
+         * Loads the list of temporary shifts from browser's localStorage.
+         */
+        function loadTempShiftsFromStorage() {
+            const storedShifts = localStorage.getItem('tempShifts');
+            return storedShifts ? JSON.parse(storedShifts) : [];
+        }
+
+        /**
+         * Saves the current list of temporary shifts to browser's localStorage.
+         */
+        function saveTempShiftsToStorage() {
+            localStorage.setItem('tempShifts', JSON.stringify(tempShifts));
+        }
+
+        /**
+         * Populates the hidden courses when a tutor is selected.
+         */
+        function handleTempShiftTutorSelect() {
+            const selectedName = document.getElementById('tempShiftInputName').value;
+            const coursesInput = document.getElementById('tempShiftInputCoursesHidden'); // *** Changed ID here ***
+
+            // Set default values
+            coursesInput.value = '';
+
+            if (!selectedName) return;
+
+            // Find the tutor in the master list or temp list to get courses
+            // Prefer the original data for the most accurate course list
+            const tutor = allTutors.find(t => t.tutor_name === selectedName) || tempShifts.find(t => t.tutor_name === selectedName);
+
+            if (tutor) {
+                // 1. Auto-populate courses into the HIDDEN field
+                // Ensure courses are displayed in Title Case for consistency in the input box
+                const coursesList = tutor.supported_courses.map(c => toTitleCase(c)).join(', ');
+                coursesInput.value = coursesList;
+            } else {
+                // Clear the input
+                coursesInput.value = '';
+                // Since this is a temporary shift, we assume the user knows the courses if the tutor isn't in the main schedule
+            }
+
+            // Clear the time inputs for manual entry
+            document.getElementById('tempShiftStartTime').value = '';
+            document.getElementById('tempShiftStopTime').value = '';
+        }
+
+        /**
+         * Adds a temporary shift for today to the global list and saves it.
+         */
+        function addTempShift() {
+            const name = document.getElementById('tempShiftInputName').value;
+            const startTime = document.getElementById('tempShiftStartTime').value;
+            const stopTime = document.getElementById('tempShiftStopTime').value;
+            const coursesHidden = document.getElementById('tempShiftInputCoursesHidden').value;
+            const todayName = getTodayName(); // e.g., "Monday"
+
+            if (!name || !startTime || !stopTime || !coursesHidden || todayName === 'all') {
+                alert("Please select a tutor and enter valid start/stop times.");
+                return;
+            }
+
+            const newShift = {
+                tutor_name: name,
+                image_url: tutorImageMap[name] || '', // Use the image from the map
+                schedule: [{
+                    day: todayName, // Always current day
+                    time: `${startTime} - ${stopTime} (Temp Shift)` // Mark it as temporary
+                }],
+                supported_courses: coursesHidden.split(',').map(c => c.trim()).filter(c => c.length > 0)
+            };
+
+            // Remove any existing temporary shift for this tutor today
+            tempShifts = tempShifts.filter(shift => shift.tutor_name !== name);
+            // Add the new shift
+            tempShifts.push(newShift);
+
+            saveTempShiftsToStorage();
+            applyFilters();
+
+            // Clear inputs after success
+            document.getElementById('tempShiftInputName').value = '';
+            document.getElementById('tempShiftStartTime').value = '';
+            document.getElementById('tempShiftStopTime').value = '';
+            document.getElementById('tempShiftInputCoursesHidden').value = '';
+
+            alert(`Temporary shift added for ${name} on ${todayName}: ${startTime} - ${stopTime}`);
+        }
+
+        /**
+         * Clears all temporary shifts for all tutors.
+         */
+        function clearTempShifts() {
+            if (confirm("Are you sure you want to clear ALL temporary shifts immediately?")) {
+                tempShifts = [];
+                localStorage.removeItem('tempShifts');
+                applyFilters();
+                alert("All temporary shifts have been cleared.");
+            }
+        }
+
+        // ==========================================================
+        // TUTOR NOTE MANAGEMENT (CURRENT DAY PERSISTENCE)
+        // ==========================================================
+
+        /**
+         * Loads the list of tutor notes from browser's localStorage.
+         */
+        function loadTutorNotesFromStorage() {
+            const storedData = localStorage.getItem('tutorNotesData');
+            const todayDate = getTodayDateString();
+
+            if (storedData) {
+                try {
+                    const data = JSON.parse(storedData);
+
+                    // Check if the stored date matches today's date
+                    if (data.date === todayDate) {
+                        return data.notes; // Return the notes object
+                    } else {
+                        // Date does not match, clear the old data
+                        localStorage.removeItem('tutorNotesData');
+                    }
+                } catch (e) {
+                    console.error("Error parsing stored tutor notes data. Clearing bad data.", e);
+                    localStorage.removeItem('tutorNotesData');
+                }
+            }
+            return {};
+        }
+
+        /**
+         * Saves the current list of tutor notes along with today's date to browser's localStorage.
+         */
+        function saveTutorNotesToStorage() {
+            const todayDate = getTodayDateString();
+            const dataToStore = {
+                date: todayDate,
+                notes: tutorNotes // Store the notes object
+            };
+            localStorage.setItem('tutorNotesData', JSON.stringify(dataToStore));
+        }
+
+        /**
+         * Saves a new tutor note or updates an existing one.
+         */
+        function saveTutorNote() {
+            const tutorName = document.getElementById('noteTutorSelect').value;
+            const noteInput = document.getElementById('tutorNoteInput').value.trim();
+
+            if (!tutorName) {
+                alert("Please select a tutor.");
+                return;
+            }
+
+            if (noteInput) {
+                tutorNotes[tutorName] = noteInput;
+                alert(`Note saved for ${tutorName}: "${noteInput}"`);
+            } else {
+                delete tutorNotes[tutorName];
+                alert(`Note for ${tutorName} cleared.`);
+            }
+
+            saveTutorNotesToStorage();
+            applyFilters(); // Re-render to show the note
+
+            // Clear the note input after success
+            document.getElementById('tutorNoteInput').value = '';
+            document.getElementById('noteTutorSelect').value = ''; // Reset select
+        }
+
+        /**
+         * Clears all saved tutor notes.
+         */
+        function clearNotes() {
+            if (confirm("Are you sure you want to clear ALL saved tutor notes immediately?")) {
+                tutorNotes = {};
+                localStorage.removeItem('tutorNotesData');
+                applyFilters();
+                alert("All tutor notes have been cleared.");
+            }
+        }
+
+
+        // ==========================================================
+        // 1. DATA LOADING & INITIAL SETUP
+        // ==========================================================
+
+        /**
+         * Fetches tutor data from the JSON file and calls initial rendering.
+         */
+        async function loadTutorData() {
+            try {
+                // IMPORTANT: The path to tutorData.json must be correct
+                const response = await fetch('tutorData.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                allTutors = data; // Store the original, full list
+
+                // Populate global image map and filter options
+                allTutors.forEach(tutor => {
+                    tutorImageMap[tutor.tutor_name] = tutor.image_url;
+                });
+
+                populateFilterOptions();
+                populateAdminSelects();
+
+                // --- CHANGE 1: START ON CURRENT DAY ONLY ---
+                const todayName = getTodayName();
+                document.getElementById('dayFilter').value = todayName;
+
+                // Initial rendering of the schedule (now filtered to today)
+                applyFilters();
+
+                // Apply watermark (now at the bottom of the script)
+                updateWatermarkForHolidays();
+
+
+            } catch (error) {
+                console.error("Could not fetch tutor data: ", error);
+                document.getElementById('schedule-grid').innerHTML = '<p class="text-red-600 font-bold">Error loading schedule data. Please check the `tutorData.json` file path and content.</p>';
+            }
+        }
+
+        /**
+         * Populates the Tutor filter dropdown.
+         */
+        function populateFilterOptions() {
+            const tutorSelect = document.getElementById('tutorFilter');
+            const sortedTutors = [...allTutors].sort((a, b) => a.tutor_name.localeCompare(b.tutor_name));
+
+            sortedTutors.forEach(tutor => {
+                const option = document.createElement('option');
+                option.value = tutor.tutor_name;
+                option.textContent = tutor.tutor_name;
+                tutorSelect.appendChild(option);
+            });
+        }
+
+        /**
+         * Populates the Tutor selection dropdowns in the Admin panel.
+         */
+        function populateAdminSelects() {
+            const tempShiftSelect = document.getElementById('tempShiftInputName');
+            const noteSelect = document.getElementById('noteTutorSelect');
+
+            // Clear previous options (except the default disabled one)
+            Array.from(tempShiftSelect.options).slice(1).forEach(option => option.remove());
+            Array.from(noteSelect.options).slice(1).forEach(option => option.remove());
+
+            const sortedNames = allTutors
+                .map(t => t.tutor_name)
+                .sort((a, b) => a.localeCompare(b));
+
+            sortedNames.forEach(name => {
+                // Clone the option for Temp Shift
+                const tempOption = document.createElement('option');
+                tempOption.value = name;
+                tempOption.textContent = name;
+                tempShiftSelect.appendChild(tempOption);
+
+                // Clone the option for Note
+                const noteOption = document.createElement('option');
+                noteOption.value = name;
+                noteOption.textContent = name;
+                noteSelect.appendChild(noteOption);
+            });
+        }
+
+
+        // ==========================================================
+        // 2. STATUS CALCULATION
+        // ==========================================================
+
+        /**
+         * Calculates the tutor's current status for the day.
+         * @returns {{status: string, statusText: string, statusColor: string}}
+         */
+        function getTutorStatus(tutor) {
+            const now = new Date();
+            const currentDayName = now.toLocaleDateString('en-US', {
+                weekday: 'long'
+            });
+            let status = 'Not Available';
+            let statusText = 'Not Available';
+            let statusColor = 'red'; // Default to red
+
+            // Find all shifts for the current day
+            const shiftsToday = tutor.schedule.filter(s => s.day === currentDayName);
+
+            if (shiftsToday.length === 0) {
+                // If no shifts today, they are Not Available (default is fine)
+                return {
+                    status,
+                    statusText,
+                    statusColor
+                };
+            }
+
+            // Check if any shift is active, upcoming, or ending soon
+            for (const shift of shiftsToday) {
+                const [startTimeStr, stopTimeStr] = shift.time.split(' - ').map(t => t.trim());
+                if (!stopTimeStr) continue; // Skip bad data
+
+                const startTime = createDateFromTime(startTimeStr, now);
+                const stopTime = createDateFromTime(stopTimeStr.replace(/\s*\(.*\)/, ''), now); // Strip Zoom/Temp notes for time parsing
+
+                if (!startTime || !stopTime) continue; // Skip if time parsing fails
+
+                // Define time constants in minutes
+                const MS_IN_MINUTE = 60000;
+                const NOW_MS = now.getTime();
+
+                // Time difference in milliseconds
+                const timeUntilStart = startTime.getTime() - NOW_MS;
+                const timeUntilEnd = stopTime.getTime() - NOW_MS;
+                // const timeSinceEnd = NOW_MS - stopTime.getTime(); // Not needed for current logic
+
+                // 1. Available Now (Green)
+                if (timeUntilStart <= 0 && timeUntilEnd >= 0) {
+                    // It's currently within the shift
+                    status = 'Available Now';
+                    statusText = `Available until ${stopTimeStr.split('(')[0].trim()}`;
+                    statusColor = 'green';
+
+                    // Check for Clocking Out Soon (Yellow) - within 15 minutes of the end time
+                    if (timeUntilEnd < 15 * MS_IN_MINUTE) {
+                        status = 'Clocking Out Soon';
+                        statusText = `Clocking Out at ${stopTimeStr.split('(')[0].trim()}`;
+                        statusColor = 'yellow';
+                    }
+                    // Since the status is "Available Now" or "Clocking Out Soon", we can stop checking other shifts
+                    return {
+                        status,
+                        statusText,
+                        statusColor
+                    };
+                }
+
+                // 2. Upcoming Today (Blue) - if the shift starts within the next 2 hours
+                if (timeUntilStart > 0 && timeUntilStart <= 120 * MS_IN_MINUTE) {
+                    if (statusColor !== 'green' && statusColor !== 'yellow') {
+                        status = 'Upcoming Today';
+                        statusText = `Starting at ${startTimeStr.split('(')[0].trim()}`;
+                        statusColor = 'blue';
+                        // Don't return yet, as a later shift might be 'Available Now'
+                    }
+                }
+
+                // 3. Not Available (Red) - default, or if the shift ended recently (or for all shifts not in the above categories)
+                // If the only shifts were past shifts, the default 'Not Available' is fine.
+            }
+
+            // If we checked all shifts and the status is still the default 'Not Available',
+            // or if the shift ended recently, we confirm the red status.
+            return {
+                status,
+                statusText,
+                statusColor
+            };
+        }
+
+
+        // ==========================================================
+        // 3. FILTERING LOGIC
+        // ==========================================================
+
+        /**
+         * Applies the filters and calls renderSchedule.
+         */
+        function applyFilters() {
+            const subjectFilterText = document.getElementById('subjectFilter').value.toLowerCase().trim();
+            const tutorFilterName = document.getElementById('tutorFilter').value;
+            const dayFilterName = document.getElementById('dayFilter').value;
+            const currentDayName = getTodayName();
+
+            // 1. COMPILE FULL TUTOR LIST (Regular + Temp Shifts)
+            // Start with all regular tutors. Filter out any regular shifts that are overridden by a temp shift.
+            let activeTutors = allTutors.filter(regularTutor =>
+                // Filter out the regular tutor if a temporary shift exists for them on the CURRENT day.
+                // Note: Temp shifts only apply to the current day.
+                !(dayFilterName === currentDayName &&
+                    tempShifts.some(tempShift => tempShift.tutor_name === regularTutor.tutor_name &&
+                        tempShift.schedule.some(s => s.day === currentDayName))
+                )
+            );
+
+            // Add the temporary shifts. These shifts only apply to the current day.
+            const tempShiftsToday = tempShifts.filter(shift => shift.schedule.some(s => s.day === currentDayName));
+            // Only add temp shifts if the user is viewing the current day
+            if (dayFilterName === currentDayName) {
+                activeTutors = [...activeTutors, ...tempShiftsToday];
+            } else {
+                // If viewing a different day, only show regular schedules
+            }
+
+
+            // 2. APPLY FILTERS TO THE LIST
+            const filteredTutors = activeTutors.filter(tutor => {
+                // Filter by Tutor Name
+                if (tutorFilterName !== 'all' && tutor.tutor_name !== tutorFilterName) {
+                    return false;
+                }
+
+                // Filter by Course/Subject
+                if (subjectFilterText) {
+                    const matchesCourse = tutor.supported_courses.some(course =>
+                        course.toLowerCase().includes(subjectFilterText)
+                    );
+                    if (!matchesCourse) {
+                        return false;
+                    }
+                }
+
+                // Keep all tutors for now, the schedule rendering will handle the day filtering and absence marking
+                return true;
+            });
+
+
+            // 3. ORGANIZE BY DAY
+            const fullSchedule = daysOfWeek.map(day => {
+                const tutorsForDay = filteredTutors.filter(tutor =>
+                    tutor.schedule.some(s => s.day === day)
+                );
+
+                return {
+                    day: day,
+                    tutors: tutorsForDay
+                };
+            });
+
+
+            // 4. APPLY DAY FILTER (for display)
+            let finalSchedule = fullSchedule;
+            let selectedDay = dayFilterName;
+
+            if (dayFilterName !== 'all') {
+                // If filtering by day, only show that one day's data
+                finalSchedule = fullSchedule.filter(d => d.day === dayFilterName);
+            }
+
+            // 5. RENDER THE SCHEDULE
+            // ----------------------------------------------------------
+            renderSchedule(finalSchedule, selectedDay);
+        }
+
+        // ==========================================================
+        // 4. RENDERING LOGIC (MODIFIED FOR STATUS ONLY ON CURRENT DAY & EPE TEXT)
+        // ==========================================================
+
+        /**
+         * Renders the schedule grid based on the filtered data.
+         * MODIFIED to use full color-coded boxes and display EPE courses.
+         */
+        function renderSchedule(data, singleDayFilter) {
+            const scheduleGrid = document.getElementById('schedule-grid');
+            scheduleGrid.innerHTML = '';
+
+            // Adjust grid layout for single day filter
+            if (singleDayFilter !== 'all') {
+                scheduleGrid.classList.add('single-day-expanded');
+            } else {
+                scheduleGrid.classList.remove('single-day-expanded');
+            }
+
+            // Determine which days to render (either all or just the selected one)
+            const daysToRender = singleDayFilter !== 'all' ? [singleDayFilter] : daysOfWeek;
+            const currentDayName = getTodayName();
+
+
+            daysToRender.forEach(day => {
+                const dayData = data.find(d => d.day === day) || {
+                    day: day,
+                    tutors: []
+                };
+                const dayDiv = document.createElement('div');
+                // Standard day column styling
+                dayDiv.className = 'day-column p-4 border rounded-xl shadow-lg bg-gray-50';
+
+                // Day Title
+                const dayTitle = document.createElement('h3');
+                dayTitle.className = 'text-lg font-bold mb-3 text-gray-800 border-b border-gray-200 pb-2';
+                dayTitle.textContent = day;
+                dayDiv.appendChild(dayTitle);
+
+                let hasTutors = false;
+
+                dayData.tutors.sort((a, b) => {
+
+                    // The 'day' variable here is the day currently being rendered in the column.
+                    if (currentDayName === day) {
+                        // --- 1. Primary Sort: Color Priority (ONLY on the Current Day) ---
+                        const statusA = getTutorStatus(a);
+                        const statusB = getTutorStatus(b);
+
+                        // Check for absence status
+                        const isAbsentA = absentTutors.has(a.tutor_name.toLowerCase());
+                        const isAbsentB = absentTutors.has(b.tutor_name.toLowerCase());
+
+                        const priorityA = getPriorityScore(statusA.statusColor, isAbsentA);
+                        const priorityB = getPriorityScore(statusB.statusColor, isAbsentB);
+
+                        if (priorityA !== priorityB) {
+                            return priorityA - priorityB; // Sorts by priority (1, 2, 3, 4)
+                        }
+                    }
+
+                    // --- 2. Secondary Sort: By Shift Start Time (or Primary for non-current days) ---
+                    const now = new Date();
+                    const timeA = a.schedule.find(s => s.day === day)?.time.split(' - ')[0] || "11:59 PM";
+                    const timeB = b.schedule.find(s => s.day === day)?.time.split(' - ')[0] || "11:59 PM";
+
+                    const dateA = createDateFromTime(timeA, now);
+                    const dateB = createDateFromTime(timeB, now);
+
+                    if (dateA && dateB) {
+                        return dateA.getTime() - dateB.getTime();
+                    }
+
+                    // Final fallback: Alphabetical by name
+                    return a.tutor_name.localeCompare(b.tutor_name);
+                }).forEach(tutor => {
+                    hasTutors = true;
+
+                    // --- 1. DETERMINE STATUS AND COLOR ---
+                    const {
+                        status,
+                        statusText,
+                        statusColor
+                    } = getTutorStatus(tutor);
+
+                    const isToday = currentDayName === day;
+                    const isAbsentAndToday = isToday && absentTutors.has(tutor.tutor_name.toLowerCase());
+
+                    // --- 2. CREATE CARD CONTAINER & APPLY COLOR BOX STYLING (NEW) ---
+                    const tutorCard = document.createElement('div');
+                    const tutorShiftTime = tutor.schedule.find(s => s.day === day)?.time || 'N/A';
+
+
+                    let baseClasses = 'tutor-card p-3 mb-3 rounded-lg shadow-md transition duration-300 relative';
+                    let bgColorClass;
+                    let textColorClass;
+                    let currentStatusText = isToday ? statusText : 'Scheduled'; // Set default status for non-current days
+
+                    // --- APPLY COLOR CODING ONLY IF IT IS THE CURRENT DAY ---
+                    if (isToday) {
+                        if (isAbsentAndToday) {
+                            // Absent takes precedence (red-200 with opacity 60 for absent)
+                            bgColorClass = 'bg-violet-300 opacity-100';
+                            textColorClass = 'text-red-800';
+                            currentStatusText = 'Absent Today';
+                        } else if (statusColor === 'green') {
+                            bgColorClass = 'bg-green-100';
+                            textColorClass = 'text-green-700';
+                        } else if (statusColor === 'yellow') {
+                            bgColorClass = 'bg-yellow-100';
+                            textColorClass = 'text-yellow-700';
+                        } else if (statusColor === 'blue') {
+                            bgColorClass = 'bg-blue-100';
+                            textColorClass = 'text-blue-700';
+                        } else {
+                            // Not Available/Past shift today (red-100)
+                            bgColorClass = 'bg-red-100';
+                            textColorClass = 'text-red-700';
+                        }
+                    } else {
+                        // --- NEUTRAL STYLING FOR ALL OTHER DAYS ---
+                        bgColorClass = 'bg-white hover:bg-gray-50 border border-gray-200';
+                        textColorClass = 'text-gray-700';
+                    }
+
+                    tutorCard.className = `${baseClasses} ${bgColorClass}`;
+
+
+                    // --- 3. CREATE CARD CONTENT ---
+                    
+                    const tutorShiftTimeRaw = tutor.schedule.find(s => s.day === day)?.time || 'N/A';
+                    // Format the time string conditionally
+                    const tutorShiftTimeFormatted = formatScheduleTimeWithMagenta(tutorShiftTimeRaw);
+
+                    // Container for Name, Image, and Time (using Flexbox to position name/image side-by-side)
+                    const headerContent = document.createElement('div');
+                    headerContent.className = 'flex items-center justify-between'; // Tailwind for flex alignment
+
+                    // Tutor Name & Time Info (on the left)
+                    const infoDiv = document.createElement('div');
+                    infoDiv.innerHTML = `
+                        <p class="font-bold text-gray-900">${tutor.tutor_name}</p>
+                        <p class="text-sm text-gray-700">${tutorShiftTime}</p>
+                    `;
+                    headerContent.appendChild(infoDiv);
+
+                    // 👇 **MODIFIED LOGIC HERE** 👇
+                    // NEW: Static Image (only for the current day AND when NOT viewing all days)
+                    // The image displays IF the day is today AND the user has filtered to a SINGLE day.
+                    if (isToday && singleDayFilter !== 'all') {
+                        const imageUrl = tutorImageMap[tutor.tutor_name] || 'Spook_Dol.png'; // Fallback to the watermark image
+                        const imageHtml = `
+                            <img src="${imageUrl}" alt="${tutor.tutor_name} headshot" 
+                                class="tutor-card-image">
+                        `;
+                        headerContent.innerHTML += imageHtml;
+                    }
+                    // 👆 **END OF MODIFIED LOGIC** 👆
+
+                    tutorCard.appendChild(headerContent);
+
+                    // 🟢 MODIFIED STATUS INDICATOR: Added emoji and updated text format
+                    const statusEmoji = isToday ? getStatusEmoji(statusColor, isAbsentAndToday) : '';
+                    const statusPrefix = isToday ? `Status: ${statusEmoji} ` : '';
+
+                    tutorCard.innerHTML += `
+                        <p class="text-xs font-semibold mt-1 ${isToday ? textColorClass : 'text-gray-500'}">
+                            ${statusPrefix}${currentStatusText}
+                        </p>
+                        `;
+
+                    // --- 4. IMPLEMENT EPE COURSE DISPLAY (CHANGE 3: BLUE TEXT) ---
+                    // Filter for courses containing "(EPE)" (case-insensitive)
+                    const epeCourses = tutor.supported_courses.filter(course => course.toUpperCase().includes('(EPE)'));
+                    if (epeCourses.length > 0) {
+                        // Create simple blue text HTML, removing the "(EPE)" from the course name before applying Title Case
+                        const epeCoursesHtml = epeCourses.map(course => {
+                            const courseName = toTitleCase(course.replace(/\(epe\)/i, '').trim());
+                            // Using a simple blue text class
+                            return `<span class="block text-xs text-blue-700 font-medium">${courseName} (EPE)</span>`;
+                        }).join('');
+
+                        // Add the EPE Course section
+                        tutorCard.innerHTML += `
+                            <div class="mt-2 pt-2 border-t border-gray-200">
+                                <p class="text-xs font-semibold text-blue-600 mb-1">EPE Support:</p>
+                                <div>${epeCoursesHtml}</div>
+                            </div>
+                        `;
+                    }
+
+
+                    // --- 5. ATTACH NOTE (if present) ---
+                    const tutorNote = tutorNotes[tutor.tutor_name];
+                    if (tutorNote) {
+                        const noteDiv = document.createElement('div');
+                        noteDiv.className = 'mt-2 p-2 bg-blue-200 text-blue-800 text-xs rounded font-medium';
+                        noteDiv.textContent = `Note: ${tutorNote}`;
+                        tutorCard.appendChild(noteDiv);
+                    }
+
+
+                    // --- 6. ATTACH COURSES BUTTON ---
+                    const coursesButton = document.createElement('button');
+                    coursesButton.textContent = 'Show All Courses';
+                    // *** SMALL LINK STYLE (Confirmed) ***
+                    coursesButton.className = `mt-3 text-xs text-teal-500 hover:text-teal-700 focus:outline-none ${isAbsentAndToday ? 'opacity-60 cursor-not-allowed' : ''}`;
+                    coursesButton.onclick = () => {
+                        // Apply Title Case to all courses before displaying
+                        const formattedCourses = tutor.supported_courses.map(c => toTitleCase(c));
+                        alert(
+                            `${tutor.tutor_name}'s Courses:\n\n${formattedCourses.join('\n')}`
+                        );
+                    };
+
+                    if (isAbsentAndToday) {
+                        coursesButton.disabled = true; // Visually fade out the button
+                    }
+
+                    tutorCard.appendChild(coursesButton);
+                    dayDiv.appendChild(tutorCard);
+                });
+
+                if (!hasTutors) {
+                    dayDiv.innerHTML += '<p class="text-sm text-gray-500 mt-4">No tutors scheduled.</p>';
+                }
+
+                scheduleGrid.appendChild(dayDiv);
+            });
+        }
+
+
+        // ==========================================================
+        // 5. EVENT LISTENERS
+        // ==========================================================
+
+        // Listener for filter changes
+        document.getElementById('subjectFilter').addEventListener('input', applyFilters);
+        document.getElementById('tutorFilter').addEventListener('change', applyFilters);
+        document.getElementById('dayFilter').addEventListener('change', applyFilters);
+
+
+        // ==========================================================
+        // 6. INITIAL PAGE LOAD LISTENER
+        // ==========================================================
+        document.addEventListener('DOMContentLoaded', loadTutorData);
+    </script>
+</body>
+
+</html>

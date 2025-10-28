@@ -1,0 +1,1654 @@
+[
+  {
+    "tutor_name": "Connor Blackwell",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/blackwell-connor-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "6:00 PM - 8:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "4:00 PM - 7:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "2:00 PM - 4:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "3:00 PM - 6:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "ACCT 330 (PYTHON help only)",
+      "ASL 101 American Sign Language I",
+      "ASL 102 American Sign Language II",
+      "BIOL 200 Principles of Organismal & Population",
+      "BIOL 201 Principles of Cell & Molecular Bio",
+      "BIOL 203 Statistics for Biologists",
+      "BIOL 300 Cell Biology",
+      "BIOL 302 Genetics",
+      "BIOL 303 Evolutionary Biology",
+      "BIOL 312 Marine Biology",
+      "BIOL 320 Deep Sea Biology",
+      "BIOL 433 Ecology & The Environment",
+      "CHEM 105 Intro to Chemistry",
+      "CHEM 110 Chemistry of Life",
+      "CHEM 121 Gen Chem I",
+      "CHEM 311 Organic Chemistry I (EPE)",
+      "CHEM 312 Organic Chemistry I Lab",
+      "CHEM 313 Organic Chemistry I Problem Solving",
+      "CHEM 314 Organic Chemistry II",
+      "CHEM 315 Organic Chemistry II Lab",
+      "CHEM 316 Organic Chemistry II Problem Solving",
+      "CHEM 341 Drug Discovery & Development",
+      "ECON 341",
+      "ESRM 210 Physical Oceanography"
+    ]
+  },
+  {
+    "tutor_name": "Erika Datu",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/datu-erika-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "5:00 PM - 8:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "5:00 PM - 8:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "6:00 PM - 8:00 PM"
+      },
+      {
+        "day": "Friday",
+        "time": "12:00 PM - 2:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 201 - Principles of Cell &Molecular Biology",
+      "BIOL 300 - Cell Biology",
+      "BIOL 302 - Genetics",
+      "BIOL 304 - Comparative Animal Physiology",
+      "BIOL/CHEM 150 - Critical Thinking for Science Majors",
+      "BUS 341 Drug Discovery & Development",
+      "CHEM 105 Intro to Chemistry",
+      "CHEM 110 Chemistry of Life",
+      "CHEM 121 Gen Chem I",
+      "CHEM 122 Gen Chem II (EPE)",
+      "CHEM 124 Gen Chem II Problem Solving",
+      "CHEM 314 Organic Chemistry II",
+      "CHEM 341",
+      "CHEM/ECON/BUS 341 Drug Discovery & Development",
+      "ECON 341",
+      "MATH 101 - College Algebra",
+      "MATH 105 - Pre-Calculus (EPE)",
+      "MATH 98 - Pre-Calculus Support",
+      "PSY 220 - Human Sexual Behavior"
+    ]
+  },
+  {
+    "tutor_name": "Mary Guillen",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/guillen-mary-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "3:30 PM - 6:30 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "3:30 PM - 6:30 PM"
+      },
+      {
+        "day": "Sunday",
+        "time": "5:00 PM - 7:00 PM (Zoom Only)"
+      }
+    ],
+    "supported_courses": [
+      "ECON 110 - Principles of Microeconomics (EPE)",
+      "ECON 111 - Principles of Macroeconomics",
+      "R Help"
+    ]
+  },
+  {
+    "tutor_name": "Louis Heer",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/heer-louis-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "2:00 PM - 4:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "2:00 PM - 4:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "2:00 PM - 4:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "DATA 200 - Introduction to Data Science",
+      "ECON 110 - Principles of Microeconomics",
+      "MATH 201 - Elementary Statistics (EPE)",
+      "MATH/PSY 202 - Biostatistics (EPE)",
+      "R Help"
+    ]
+  },
+  {
+    "tutor_name": "Joseph Shumaker",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/shumaker-joseph-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "12:30 PM - 2:30 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "3:00 PM - 5:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "10:00 AM - 12:00 PM"
+      },
+      {
+        "day": "Friday",
+        "time": "11:30 AM - 1:30 PM"
+      }
+    ],
+    "supported_courses": [
+      "ACCT 330 - Accounting Information Systems and Data Analytics (PYTHON help only)",
+      "COMP 101 - Computer Literacy",
+      "COMP 102 - Web Development",
+      "COMP 121 - Introduction to Programming C for STEAM (EPE)",
+      "COMP 150 - Object Oriented Programming",
+      "COMP IT 105 - Intro to Programming (HTML & Javascript)",
+      "COMP IT 105 - Intro to Programming (Java)",
+      "COMP IT 105 - Intro to Programming (Python)",
+      "MATH 101 - College Algebra",
+      "MATH 103 - Stretch Pre-Calculus I",
+      "MATH 104 - Stretch Pre-Calculus II",
+      "MATH 105 - Pre-Calculus"
+    ]
+  },
+  {
+    "tutor_name": "Ellie Stark",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/stark-ellie-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Tuesday",
+        "time": "12:00 PM - 1:15 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "4:15 PM - 7:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "ACCT 210 - Financial Accounting",
+      "ACCT 220 - Managerial Accounting",
+      "BUS 110 - Business Law",
+      "BUS 111 - Introduction to Business through Writing",
+      "ECON 110 - Principles of Microeconomics (EPE)",
+      "ECON 111 - Principles of Macroeconomics",
+      "Excel Help",
+      "MATH 105 - Pre-Calculus"
+    ]
+  },
+  {
+    "tutor_name": "Nicholas Weisbecker",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/weisbecker-nicholas-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "6:00 PM - 8:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "10:45 AM - 12:45 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "6:00 PM - 8:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "2:30 PM - 5:30 PM"
+      }
+    ],
+    "supported_courses": [
+      "BUS 309 - Quantitative Foundations for Business (EPE)",
+      "BUS 310 - Business Discourse for the 21st Century",
+      "ECON 309 - Quantitative Foundations for Business (EPE)",
+      "MATH 101 - College Algebra",
+      "MATH 140 - Calculus for Business Applications",
+      "MATH 438 - Philosophy of Mathematics",
+      "MGT 326 - Business Ethics",
+      "PHIL 438 - Philosophy of Mathematics"
+    ]
+  },
+  {
+    "tutor_name": "Morgan Bohman",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/bohman-morgan-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "5:00 PM - 7:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "3:00 PM - 5:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "3:00 PM - 5:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "ASL - American Sign Language I",
+      "MATH 105 - Pre-Calculus",
+      "MATH 150 - Calculus I (EPE)",
+      "MATH 151 - Calculus II",
+      "MATH 230 - Logic & Mathematical Reasoning",
+      "MATH 250 - Calculus III",
+      "MATH 300 - Discrete Mathematics",
+      "MATH 350 - Differential Equations & Dynamical Systems",
+      "MATH 352 - Probability & Statistics",
+      "MATH 98 Pre-Calculus Support"
+    ]
+  },
+  {
+    "tutor_name": "Brenna Holloway",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/holloway-brenna-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "10:00 AM - 11:30 AM"
+      },
+      {
+        "day": "Monday",
+        "time": "6:00 PM - 7:30 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "5:00 PM - 7:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "10:00 AM - 11:30 AM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "2:00 PM - 4:30 PM"
+      }
+    ],
+    "supported_courses": [
+      "ASL 101 American Sign Language I",
+      "ASL 102 American Sign Language II",
+      "BIOL 203 - Statistics for Biologists",
+      "ESRM 250 - Environmental Ethics",
+      "MATH 201 - Elementary Statistics (EPE)",
+      "MATH 97 - Statistics Support",
+      "MATH/PSY 202 - Biostatistics",
+      "POLS 150 - American Political Institutions",
+      "PSY 100 - Introduction to Psychology",
+      "PSY 213 - Developmental Psychology",
+      "PSY 300 - Psychological Research & Statistical Methods I",
+      "PSY 312 - Social Psychology",
+      "SPSS Help"
+    ]
+  },
+  {
+    "tutor_name": "Kaine Santos (Lead)",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/santos-kaine-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "10:30 AM - 12:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "10:30 AM - 12:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "12:00 PM - 2:30 PM"
+      },
+      {
+        "day": "Sunday",
+        "time": "5:00 PM - 7:00 PM (Zoom Only)"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 210 Anatomy & Physiology I",
+      "BIOL 300 Cell Biology",
+      "BIOL 303 Evolutionary Biology",
+      "BIOL 423 Cell & Molecular Neurobiology",
+      "CHEM 105 Intro to Chemistry (EPE)",
+      "CHEM 121 Gen Chem I",
+      "CHEM 311 - Organic Chemistry I",
+      "CHEM 312 Organic Chemistry I Lab",
+      "MATH 105 Pre-Calculus",
+      "MATH 150 Calculus I",
+      "MATH 151 - Calculus II"
+    ]
+  },
+  {
+    "tutor_name": "Matthew Dutzi (Lead)",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/dutzi-matthew-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "6:00 PM - 8:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "3:30 PM - 6:30 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "3:00 PM - 6:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "CHEM 100 - Chemistry & Society",
+      "CHEM 101 - Chemistry & The Environment",
+      "CHEM 105 Intro to Chemistry",
+      "CHEM 110 Chemistry of Life",
+      "CHEM 121 - Gen Chem I",
+      "CHEM 122 - Gen Chem II (EPE)",
+      "CHEM 122L - Gen Chem II Lab",
+      "CHEM 124 Gen Chem II Problem Solving",
+      "CHEM 250 - Quantitative Analysis",
+      "CHEM 251 - Quantitative Analysis Lab",
+      "CHEM 305 - Computer Applications in Chemistry",
+      "CHEM 311 - Organic Chemistry I",
+      "CHEM 312 Organic Chemistry I Lab",
+      "CHEM 314 Organic Chemistry II",
+      "CHEM 315 Organic Chemistry II Lab",
+      "CHEM 460 - Biochemistry I",
+      "CHEM 461 - Biochemistry I Lab"
+    ]
+  },
+  {
+    "tutor_name": "Gabby Bautista",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/bautista-gabby-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "12:00 PM - 3:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "5:30 PM - 8:00 PM"
+      },
+      {
+        "day": "Sunday",
+        "time": "5:00 PM - 7:00 PM (Zoom Only)"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 210 - Human Anatomy & Physiology I (EPE)",
+      "BIOL 211 - Human Anatomy & Physiology II",
+      "NRS 300 - Introduction to Professional Nursing",
+      "NRS 301 - Introduction to Professional Nursing Lab",
+      "NRS 304 - Pathophysiology & Pharmacology I",
+      "NRS 350 - Evidence-based Nursing Practice",
+      "NRS HLTH 348 - Healthy Aging"
+    ]
+  },
+  {
+    "tutor_name": "Anton Diesmo",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/diesmo-anton-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Wednesday",
+        "time": "12:30 PM - 3:30 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "2:00 PM - 5:00 PM"
+      },
+      {
+        "day": "Friday",
+        "time": "10:00 AM - 12:00 PM"
+      },
+      {
+        "day": "Sunday",
+        "time": "5:00 PM - 7:00 PM (Zoom Only)"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 210 - Human Anatomy & Physiology I",
+      "BIOL 211 - Human Anatomy & Physiology II",
+      "BIOL 217 - Medical Microbiology",
+      "CHEM 110 - Chemistry of Life (EPE)",
+      "CHEM 111 - Chemistry of Life - Problem Solving"
+    ]
+  },
+  {
+    "tutor_name": "Amanda Desfosses",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/desfosses-amanda-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "3:00 PM - 5:00 PM (Zoom Only)"
+      },
+      {
+        "day": "Tuesday",
+        "time": "10:00 AM - 11:30 AM (Zoom Only)"
+      },
+      {
+        "day": "Tuesday",
+        "time": "6:30 PM - 8:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "3:00 PM - 6:00 PM"
+      },
+      {
+        "day": "Friday",
+        "time": "12:00 PM - 2:00 PM (Zoom Only)"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 203 - Statistics for Biologists",
+      "BIOL 210 - Human Anatomy & Physiology I (EPE)",
+      "BIOL 211 - Human Anatomy & Physiology II",
+      "BIOL 217 - Medical Microbiology",
+      "CHEM 105 - Introduction to Chemistry",
+      "CHEM 110 - Chemistry of Life"
+    ]
+  },
+  {
+    "tutor_name": "Chris Eddy",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/eddy-chris-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Sunday",
+        "time": "5:00 PM - 7:00 PM (Zoom Only)"
+      },
+      {
+        "day": "Monday",
+        "time": "12:00 PM - 2:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "6:00 PM - 8:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 201 - Principles of Cell & Molecular Biology",
+      "BIOL 300 - Cell Biology",
+      "CHEM 121 - Gen Chem I",
+      "CHEM 122 - Gen Chem II",
+      "CHEM 122L - Gen Chem II Lab",
+      "CHEM 250 - Quantitative Analysis",
+      "CHEM 251 - Quantitative Analysis Lab",
+      "CHEM 311 - Organic Chemistry I",
+      "CHEM 460 - Biochemistry I",
+      "CHEM 461 - Biochemistry I Lab",
+      "MATH 105 S - Pre-Calculus with Support (EPE)",
+      "MATH 150 - Calculus I",
+      "MATH 151 - Calculus II",
+      "PHYS 100 - Introduction to Physics I",
+      "PHYS 101 - Introduction to Physics II"
+    ]
+  },
+  {
+    "tutor_name": "Karen Galvan",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/galvan-karen-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "3:00 PM - 5:00 PM in EOP"
+      },
+      {
+        "day": "Tuesday",
+        "time": "3:30 PM - 6:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "3:30 PM - 6:00 PM"
+      },
+      {
+        "day": "Friday",
+        "time": "10:30 AM - 12:30 PM"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 200 - Principles of Organismal & Population Bio",
+      "BIOL 210 - Human Anatomy & Physiology I",
+      "BIOL 211 - Human Anatomy & Physiology II",
+      "CHEM 105 - Introduction to Chemistry (EPE)",
+      "CHEM 110 - Chemistry of Life"
+    ]
+  },
+  {
+    "tutor_name": "Joy Gendy (Lead)",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/gendy-joy-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "10:00 AM - 11:45 AM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "2:00 PM - 5:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "6:00 PM - 8:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 201 - Principles of Cell & Molecular Biology",
+      "BIOL 300 - Cell Biology",
+      "BIOL 332 - Cancer & Society",
+      "CHEM 105 - Introduction to Chemistry",
+      "CHEM 121 - General Chemistry I (EPE)",
+      "CHEM 311 - Organic Chemistry I",
+      "CHEM 314 - Organic Chemistry II",
+      "MATH 105 - Pre-Calculus",
+      "MATH PSY 202 - Biostatistics",
+      "PSY 300 - Psychological Research & Statistical Methods I",
+      "PSY 301 - Psychological Research & Statistical Methods II",
+      "PSY 318 - Learning, Cognition, & Perception",
+      "SPSS Help"
+    ]
+  },
+  {
+    "tutor_name": "Allison Greer",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/greer-allison-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "3:00 PM - 5:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "12:00 PM - 3:00 PM"
+      },
+      {
+        "day": "Friday",
+        "time": "12:00 PM - 2:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 210 - Human Anatomy & Physiology I",
+      "BIOL 211 - Human Anatomy & Physiology II",
+      "BIOL 217 - Medical Microbiology",
+      "CHEM 110 - Chemistry of Life",
+      "HLTH 100 - Medical Terminology",
+      "HLTH 102 - Community HLTH",
+      "MATH PSY 202 - Biostatistics (EPE)"
+    ]
+  },
+  {
+    "tutor_name": "Nathaniel Hidalgo",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/hidalgo-nathaniel-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "3:00 PM - 5:30 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "1:30 PM - 2:45 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "2:00 PM - 4:30 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "5:00 PM - 8:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 217 - Medical Microbiology",
+      "CHEM 121 - General Chemistry I",
+      "CHEM 122 - General Chemistry II",
+      "CHEM 314 - Organic Chemistry II (EPE)",
+      "CHEM 315 - Organic Chemistry II Lab"
+    ]
+  },
+  {
+    "tutor_name": "Sterling Maggard",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/maggard-sterling-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "6:00 PM - 8:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "3:00 PM - 5:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "3:00 PM - 5:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 210 - Human Anatomy & Physiology I",
+      "BIOL 211 - Human Anatomy & Physiology II",
+      "BIOL 217 - Medical Microbiology",
+      "CHEM 105 - Introduction to Chemistry",
+      "CHEM 110 - Chemistry of Life",
+      "CHEM 121 - General Chemistry I",
+      "MATH 201 - Elementary Statistics",
+      "MATH PSY 202 - Biostatistics (EPE)"
+    ]
+  },
+  {
+    "tutor_name": "Bryan Magana",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/magana-bryan-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "4:00 PM - 6:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "5:00 PM - 7:30 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "5:00 PM - 7:30 PM"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 203 - Statistics for Biologists",
+      "BIOL 217 - Medical Microbiology",
+      "BIOL 300 - Cell Biology",
+      "CHEM 105 - Introduction to Chemistry",
+      "CHEM 110 - Chemistry of Life",
+      "CHEM 121 - General Chemistry I",
+      "CHEM 122 - General Chemistry II",
+      "HLTH 300 - Nutrition, Exercise, and Wellness",
+      "HLTH 302 - Health Care Informatics",
+      "HLTH 306 - Bioethics",
+      "HLTH 309 - Health Science Research Methods",
+      "MATH 201 - Elementary Statistics",
+      "MATH PSY 202 - Biostatistics (EPE)",
+      "SPSS Help"
+    ]
+  },
+  {
+    "tutor_name": "Lucero Mondragon",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/mondragon-lucero-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Tuesday",
+        "time": "3:00 PM - 5:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "5:00 PM - 8:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "3:00 PM - 5:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 203 Statistics for Biologists (EPE)",
+      "CHEM 105 Introduction to Chemistry",
+      "CHEM 314 Organic Chemistry II",
+      "SPSS Help"
+    ]
+  },
+  {
+    "tutor_name": "Ryan Moses",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/moses-ryan-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "5:00 PM - 8:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "5:30 PM - 8:00 PM"
+      },
+      {
+        "day": "Friday",
+        "time": "10:00 AM - 12:30 PM"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 201 - Principles of Cell & Molecular Biology",
+      "BIOL 300 - Cell Biology",
+      "BIOL 302 - Genetics (EPE)",
+      "BIOL 476 - Apiculture & Bee Biology Lab",
+      "BIOL 499 - Senior Capstone Biology",
+      "CHEM 105 - Introduction to Chemistry",
+      "Excel Help",
+      "MATH 101 - College Algebra",
+      "MATH 105 - Pre-Calculus",
+      "MATH 150 - Calculus I",
+      "MATH 98 - Pre-Calculus support"
+    ]
+  },
+  {
+    "tutor_name": "Kendall Paranick (Lead)",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/paranick-kendall-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Tuesday",
+        "time": "12:00 PM - 2:00 PM (Workshop)"
+      },
+      {
+        "day": "Tuesday",
+        "time": "6:00 PM - 7:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "7:00 PM - 8:50 PM (Workshop)"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 210 - Human Anatomy & Physiology I",
+      "BIOL 211 - Human Anatomy & Physiology II",
+      "HLTH 100 - Medical Terminology",
+      "HLTH 102 - Community Health",
+      "HLTH 300 - Nutrition Exercise & Wellness",
+      "NRS 300 - Introduction to Professional Nursing",
+      "NRS 301 - Introduction to Professional Nursing Lab",
+      "NRS 304 - Pathophysiology & Pharmacology I",
+      "NRS 350 - Evidence-based Nursing Practice",
+      "NRS 412 - Nursing Care of Adults II (EPE)",
+      "NRS 414 - Nursing Care of Women & Childbearing Families (EPE)",
+      "NRS 420 - Nursing Care of the Complex Patient (EPE)",
+      "NRS 421 - Nursing Care of the Complex Patient Lab",
+      "PSY 100 - Introduction to Psychology",
+      "PSY 213 - Developmental Psychology",
+      "PSY 317 - Theories of Personality",
+      "PSY 346 - Human Motivation"
+    ]
+  },
+  {
+    "tutor_name": "Fatima Ruiz (Lead)",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/ruiz-fatima-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "10:00 AM - 11:00 AM (Zoom Only)"
+      },
+      {
+        "day": "Tuesday",
+        "time": "2:00 PM - 3:00 PM (Zoom Only)"
+      },
+      {
+        "day": "Tuesday",
+        "time": "12:00 PM - 2:00 PM (Workshop)"
+      },
+      {
+        "day": "Wednesday",
+        "time": "7:00 PM - 8:50 PM (Workshop)"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 210 - Human Anatomy & Physiology I",
+      "BIOL 211 - Human Anatomy & Physiology II",
+      "BIOL 217 - Medical Microbiology",
+      "NRS 300 - Introduction to Professional Nursing",
+      "NRS 301 - Introduction to Professional Nursing Lab",
+      "NRS 304 - Pathophysiology & Pharmacology I",
+      "NRS 350 - Evidence-based Nursing Practice",
+      "NRS 412 - Nursing Care of Adults II (EPE)",
+      "NRS 414 - Nursing Care of Women & Childbearing Families (EPE)",
+      "NRS 420 - Nursing Care of the Complex Patient (EPE)",
+      "NRS 421 - Nursing Care of the Complex Patient Lab",
+      "NRS HLTH 348 - Healthy Aging"
+    ]
+  },
+  {
+    "tutor_name": "Korrin Wilding",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/wilding-korrin-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "4:00 PM - 6:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "5:30 PM - 7:30 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "4:00 PM - 6:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "5:30 PM - 7:30 PM"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 201 - Principles of Cell & Molecular Biology",
+      "BIOL 203 - Statistics for Biologists (EPE)",
+      "BIOL 300 - Cell Biology",
+      "BIOL 302 - Genetics",
+      "CHEM 105 - Introduction to Chemistry",
+      "CHEM 121 - General Chemistry I",
+      "CHEM 122 - General Chemistry II",
+      "MATH 105 - Pre-Calculus",
+      "MATH 150 - Calculus I",
+      "SPSS Help"
+    ]
+  },
+  {
+    "tutor_name": "Lily Yered",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/yered-lily-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "5:00 PM - 7:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "1:30 PM - 2:30 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "11:00 AM - 2:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 201 - Principles of Cell & Molecular Biology",
+      "BIOL 210 - Human Anatomy & Physiology I",
+      "BIOL 300 - Cell Biology",
+      "BIOL 302 - Genetics",
+      "CHEM 105 - Introduction to Chemistry",
+      "CHEM 121 - General Chemistry I (EPE)",
+      "CHEM 311 - Organic Chemistry I",
+      "CHEM 314 - Organic Chemistry II",
+      "CHEM 343 - Forensic Science"
+    ]
+  },
+  {
+    "tutor_name": "Jasmine Torres (Lead)",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/torres-jasmine-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "5:00 PM - 7:00 PM (in BCC Belltower)"
+      },
+      {
+        "day": "Monday",
+        "time": "7:00 PM - 8:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "6:00 PM - 8:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "4:00 PM - 8:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "COMP 105 Introduction to Programming (HTML & Javascript)",
+      "COMP 105 Introduction to Programming (Java)",
+      "COMP 105 Introduction to Programming (Python)",
+      "COMP 162 - Computer Architecture & Assembly Language (X86)",
+      "COMP 262 - Computer Organization & Architecture",
+      "DATA 200 - Introduction to Data Science",
+      "IT 105 Introduction to Programming (Java)",
+      "IT Introduction to Programming (HTML & Javascript)",
+      "MATH 101 - College Algebra",
+      "MATH 103 - Stretch Pre-Calculus I",
+      "MATH 104 - Stretch Pre-Calculus II",
+      "MATH 105 - Pre-Calculus",
+      "MATH 140 - Calculus for Business Applications",
+      "MATH 150 - Calculus I",
+      "MATH 151 - Calculus II (EPE)",
+      "MATH 230 - Logic & Mathematical Reasoning",
+      "MATH 240 - Linear Algebra",
+      "MATH 250 - Calculus III",
+      "MATH 300 - Discrete Mathematics",
+      "MATH 301 - Discrete Mathematics for IT",
+      "MATH 331 - History of Mathematics",
+      "MATH 351 - Real Analysis",
+      "MATH 352 - Probability & Statistics",
+      "MATH 393 - Abstract Algebra I",
+      "MATH 451 - Complex Analysis",
+      "MATH 97 - Statistics Support",
+      "MATH 98 - Pre-Calculus Support",
+      "MATH 99 - Quantitative Reasoning Support",
+      "MATH PHIL 438 - Philosophy of Mathematics",
+      "MATH PHIL PHYS 439 - Philosophy of Science",
+      "PHIL 200 - Introduction to Philosophy",
+      "PHIL 320 - Being & Knowing",
+      "PHIL FJS 210 - Ethics for a Free World",
+      "PHYS 202 - General Physics III : Light, Relativity, & Modern Physics",
+      "PHYS 301 - Classical Mechanics",
+      "PHYS 351 - Mathematic Methods of Physics",
+      "R Help"
+    ]
+  },
+  {
+    "tutor_name": "Morgan McMurray (Lead)",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/mcmurray-morgan-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Tuesday",
+        "time": "12:00 PM - 1:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "5:00 PM - 8:00 PM",
+        "notes": "office hours for COMP 232 from 6:00 PM - 7:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "5:00 PM - 8:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "6:00 PM - 8:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "COMP 121 - Introduction to Programming in C for STEAM",
+      "COMP 122 - Data Structures & Algorithms for Engineers & Scientists",
+      "COMP 232 - Programming Languages (EPE)",
+      "COMP 362 - Operating Systems",
+      "COMP 447 - Societal Issues in Computing",
+      "COMP 478 - Introduction To Data Mining",
+      "COMP IT 420 - Database Theory & Design",
+      "IT 380 - Web Programming",
+      "MATH 150 - Calculus I",
+      "MATH 230 - Logic & Mathematical Reasoning",
+      "MATH 310 - Transition to Higher Mathematics",
+      "PHIL 130 - Logic & Philosophical Reasoning"
+    ]
+  },
+  {
+    "tutor_name": "Salam Khalaf",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/khalaf-salam-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "5:00 PM - 7:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "11:00 AM - 12:30 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "5:00 PM - 7:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "11:00 AM - 12:30 PM"
+      }
+    ],
+    "supported_courses": [
+      "CHEM 105 - Introduction to Chemistry",
+      "COMP 121 - Introduction to Programming in C for STEAM",
+      "EMEC 200 - Logic Circuits",
+      "MATH 103 - Stretch Pre-Calculus I",
+      "MATH 104 - Stretch Pre-Calculus II",
+      "MATH 105 - Pre-Calculus",
+      "MATH 150 - Calculus I",
+      "MATH 151 - Calculus II",
+      "MATH 230 - Logic & Mathematical Reasoning",
+      "MATH 240 - Linear Algebra",
+      "MATH 98 - Pre-Calculus Support",
+      "PHYS 100 - Introduction to Physics I",
+      "PHYS 101 - Introduction to Physics II",
+      "PHYS 200 - General Physics I",
+      "PHYS 201 - General Physics II (EPE)"
+    ]
+  },
+  {
+    "tutor_name": "Christian Mason",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/mason-christian-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "3:00 PM - 6:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "12:50 PM - 2:50 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "4:00 PM - 6:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "12:50 PM - 2:50 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "5:00 PM - 7:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "Comp 101 - Computer Literacy",
+      "COMP 105 Introduction to Programming (Python)",
+      "COMP 150 - Object-Oriented Programming",
+      "COMP 151 - Data Structures And Program Design",
+      "COMP 162 - Computer Architecture and Assembly Language (PEP/9) (EPE)",
+      "COMP 162 - Computer Architecture and Assembly Language (X86) (EPE)",
+      "COMP 447 - Societal Issues in Computing",
+      "COMP IT 105 Introduction to Programming (HTML & Javascript)",
+      "COMP IT 105 Introduction to Programming (Java)",
+      "COMP PHYS MATH 345 - Digital Image Processing",
+      "COMP PHYS MATH 445 - Image Analysis and Pattern Recognition",
+      "MATH 101 - College Algebra",
+      "MATH 103 - Stretch Pre-Calculus I",
+      "MATH 104 - Stretch Pre-Calculus II",
+      "MATH 105 - Pre-Calculus",
+      "MATH 150 - Calculus I (EPE)",
+      "MATH 151 - Calculus II",
+      "MATH 230 - Logic & Mathematical Reasoning",
+      "MATH 240 - LInear Algebra",
+      "MATH 300 - Discrete Mathematics",
+      "MATH 97 - Statistics Support",
+      "MATH 98 - Pre-Calculus Support",
+      "MATH 99 - Quantitative Reasoning Support",
+      "PHIL 200 - Introduction to Philosophy",
+      "PHYS 100 - Introduction to Physics I",
+      "PHYS 101 - Introduction to Physics II",
+      "PHYS 200 - General Physics I",
+      "PHYS 201 - General Physics II"
+    ]
+  },
+  {
+    "tutor_name": "Noa Moryosef",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/moryosef-noa-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "3:00 PM - 5:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "12:00 PM - 2:30 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "5:30 PM - 8:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "COMP 150 - Object-Oriented Programming",
+      "COMP 151 - Data Structures And Program Design",
+      "COMP 162 - Computer Architecture and Assembly Language (PEP/9)",
+      "COMP IT 105 - Introduction to Programming (Java)",
+      "COMP IT 105 - (Python)",
+      "MATH 105 - Pre-Calculus",
+      "MATH 105 S - Pre-Calculus with Support (EPE)",
+      "MATH 150 - Calculus I",
+      "MATH 98 - Pre-Calculus Support"
+    ]
+  },
+  {
+    "tutor_name": "Jamie Moultrie-Brown",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/moultrie-brown-jamie-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "6:00 PM - 8:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "4:00 PM - 6:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "4:00 PM - 6:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "COMP 150 - Object Oriented Programming",
+      "COMP IT 105 Introduction to Programming (Java)",
+      "MATH 101 - College Algebra",
+      "MATH 103 - Stretch Pre-Calculus I",
+      "MATH 104 - Stretch Pre-Calculus II",
+      "MATH 105 - Pre-Calculus",
+      "MATH 150 - Calculus I",
+      "MATH 151 - Calculus II",
+      "MATH 230 - Logic & Mathematical Reasoning (EPE)",
+      "MATH 98 - Pre-Calculus Support",
+      "PHYS 100 - Introduction to Physics",
+      "PHYS 101 - Introduction to Physics II",
+      "PHYS 200 - General Physics I",
+      "PHYS 201 - General Physics II"
+    ]
+  },
+  {
+    "tutor_name": "Davis Owen",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/owen-davis-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "2:00 PM - 5:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "2:00 PM - 5:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "6:00 PM - 8:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "COMP 150 - Object Oriented Programming",
+      "COMP 162 - Computer Architecture & Assembly Language",
+      "COMP 350 Introduction to Software Engineering",
+      "COMP 105 Introduction to Programming (Python)",
+      "COMP IT 105 Introduction to Programming (HTML & Javascript) (EPE)",
+      "COMP IT 105 Introduction to Programming (Java) (EPE)",
+      "MATH 101 - College Algebra",
+      "MATH 103 - Stretch Pre-Calculus I",
+      "MATH 104 - Stretch Pre-Calculus II",
+      "MATH 140 - Calculus for Business Applications",
+      "MATH 150 - Calculus I",
+      "MATH 230 - Logic & Mathematical Reasoning",
+      "MATH 300 - Discrete Mathematics",
+      "MATH 98 - Pre-Calculus Support"
+    ]
+  },
+  {
+    "tutor_name": "Jason Romero",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/romero-jason-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "3:00 PM - 5:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "5:00 PM - 7:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "3:00 PM - 5:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "COMP 162 - Computer Architecture & Assembly Language (PEP/9)",
+      "MATH 101 - College Algebra Support",
+      "MATH 140 - Calculus for Business Applications (EPE)",
+      "MATH 98 - Pre-Calculus Support",
+      "MATH 105 - Pre-Calculus"
+    ]
+  },
+  {
+    "tutor_name": "Oliviah Weissman",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/weissman-oliviah-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Tuesday",
+        "time": "12:00 PM - 1:15 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "12:00 PM - 1:15 PM"
+      },
+      {
+        "day": "Sunday",
+        "time": "5:00 PM - 6:30 PM (Zoom Only)"
+      }
+    ],
+    "supported_courses": [
+      "COMP 150 - Object Oriented Programming (EPE)",
+      "COMP 151 - Data Structures & Program Design (EPE)",
+      "COMP IT 105 - Intro to Programming (HTML & Javascript)",
+      "COMP IT 105 - Intro to Programming (Java)",
+      "COMP IT 105 - Intro to Programming (Python)",
+      "MATH 137 - Strategies and Game Design"
+    ]
+  },
+  {
+    "tutor_name": "Alex Bonilla (Lead)",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/bonilla-alexander-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Tuesday",
+        "time": "10:00 AM - 12:30 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "10:00 AM - 12:30 PM"
+      },
+      {
+        "day": "Sunday",
+        "time": "5:00 PM - 7:00 PM (Zoom Only)"
+      }
+    ],
+    "supported_courses": [
+      "Excel Help",
+      "MATH 101 - College Algebra",
+      "MATH 103 - Stretch Pre-Calculus",
+      "MATH 104 - Stretch Pre-Calculus II",
+      "MATH 105 - Pre-Calculus",
+      "MATH 140 - Business Calculus",
+      "MATH 150 - Calculus (EPE)",
+      "MATH 151 - Calculus II (EPE)",
+      "MATH 208 - Modern Mathematics for Elementary Teaching",
+      "MATH 230 - Logical and Mathematical Reasoning",
+      "MATH 300 - Discrete Mathematics",
+      "MATH 308 - Foundational Geometry, Probability, and Statistics",
+      "MATH 310 - Transition to Higher Mathematics",
+      "MATH 318 - Mathematics for Secondary School Teachers",
+      "MATH 330 - Mathematics and Fine Arts",
+      "MATH 350 - Differential Equations",
+      "MATH 352 - Probability and Statistics",
+      "MATH 393 - Abstract Algebra",
+      "MATH 450 - Partial Differential Equations",
+      "MATH 451 - Complex Analysis",
+      "MATH 482 - Number Theory",
+      "MATH 98 - Pre-Calculus Support"
+    ]
+  },
+  {
+    "tutor_name": "Andre Bortoloto Lebeis",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/bortolotolebeis-andre-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "4:30 PM - 7:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "4:30 PM - 7:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "12:30 PM - 3:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "4:30 PM - 7:00 PM"
+      },
+      {
+        "day": "Friday",
+        "time": "12:00 PM - 2:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "MATH 101 - College Algebra",
+      "MATH 105 - Pre-Calculus (EPE)",
+      "MATH 150 - Calculus I",
+      "MATH 240 - Linear Algebra",
+      "MATH 300 - Discrete Mathematics (EPE)"
+    ]
+  },
+  {
+    "tutor_name": "Cristiann Castro",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/castro-cristiann-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "10:00 AM - 1:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "5:00 PM - 8:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "10:00 AM - 1:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "MATH 101 College Algebra",
+      "MATH 103 Stretch Pre-Calculus I",
+      "MATH 104 Stretch Pre-Calculus II",
+      "MATH 105 Pre-Calculus (EPE)",
+      "MATH 140 Calculus for Business Applications",
+      "MATH 150 Calculus I",
+      "MATH 151 Calculus II",
+      "MATH 190 Algebra through Ancient Mathematics",
+      "MATH 199 Stretch College Statistics",
+      "MATH 201 Elementary Statistics",
+      "MATH 250 Calculus III",
+      "MATH 352 Probability & Statistics",
+      "MATH 499 Senior Colloquium",
+      "MATH 97 Statistics Support",
+      "MATH 98 Pre-Calculus Support",
+      "MATH PSY 202 Biostatistics"
+    ]
+  },
+  {
+    "tutor_name": "Bryton Davies-Mahaffey",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/davies-mahaffey-bryton-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Tuesday",
+        "time": "4:00 PM - 6:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "2:00 PM - 4:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "4:00 PM - 6:00 PM"
+      },
+      {
+        "day": "Sunday",
+        "time": "5:00 PM - 7:00 PM (Zoom Only)"
+      }
+    ],
+    "supported_courses": [
+      "MATH 201 - Elementary Statistics",
+      "MATH PSY 202 - Biostatistics (EPE)",
+      "PHIL 130 - Logic And Philosophical Reasoning"
+    ]
+  },
+  {
+    "tutor_name": "Vivian Flores de Jesus",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/floresdejesus-vivian-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Tuesday",
+        "time": "10:00 AM - 1:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "12:00 PM - 2:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "1:00 PM - 3:00 PM"
+      },
+      {
+        "day": "Sunday",
+        "time": "5:00 PM - 7:00 PM (Zoom Only)"
+      }
+    ],
+    "supported_courses": [
+      "MATH 101 - College Algebra",
+      "MATH 103 - Stretch Pre-Calculus I",
+      "MATH 104 - Stretch Pre-Calculus II",
+      "MATH 105 - Pre-Calculus",
+      "MATH 105 S - Pre-Calculus with Support (EPE)",
+      "MATH 150 - Calculus I",
+      "MATH 151 - Calculus II",
+      "MATH 208 - Modern Mathematics For Elementary Teaching I Numbers And Problem Solving",
+      "MATH 98 - Pre-Calculus Support (EPE)"
+    ]
+  },
+  {
+    "tutor_name": "Joseph Olague",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/olague-joseph-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Tuesday",
+        "time": "12:30 PM - 2:30 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "12:30 PM - 2:30 PM"
+      },
+      {
+        "day": "Friday",
+        "time": "10:00 AM - 12:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "MATH 105 - Pre-Calculus",
+      "MATH 150 - Calculus I",
+      "MATH 151 - Calculus II",
+      "PHYS 200 - General Physics I (EPE)"
+    ]
+  },
+  {
+    "tutor_name": "Emily Gonzalez",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/gonzalez-emily-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Tuesday",
+        "time": "6:30 PM - 8:30 PM (NRS 304 Workshop)"
+      },
+      {
+        "day": "Thursday",
+        "time": "12:00 PM - 1:00 PM (Zoom Only)"
+      }
+    ],
+    "supported_courses": [
+      "NRS 304 Pathophysiology & Pharmacology I (EPE)",
+      "PSY 220 Human Sexual Behavior",
+      "PSY 300 Psychological Research & Statistical Methods I",
+      "PSY 301 Psychological Research & Statistical Methods II",
+      "PSY 313 Clinical & Abnormal Psychology",
+      "PSY 317 Theories of Personality",
+      "PSY 346 Human Motivation"
+    ]
+  },
+  {
+    "tutor_name": "Aimee Juarez",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/juarez-aimee-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Tuesday",
+        "time": "6:30 PM - 8:30 PM (NRS 304 Workshop)"
+      },
+      {
+        "day": "Thursday",
+        "time": "10:00 AM - 12:00 PM (Zoom Only)"
+      },
+      {
+        "day": "Thursday",
+        "time": "4:00 PM - 8:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 210 Anatomy & Physiology I",
+      "BIOL 211 - Human Anatomy & Physiology II",
+      "BIOL 217 - Medical Microbiology",
+      "CHEM 110 - Chemistry of Life",
+      "HLTH 100 - Medical Terminology",
+      "NRS 304 Pathophysiology & Pharmacology I (EPE)",
+      "PSY 300 Psychological Research & Statistical Methods I",
+      "PSY 301 Psychological Research & Statistical Methods II",
+      "PSY 317 Theories of Personality",
+      "PSY 346 Human Motivation"
+    ]
+  },
+  {
+    "tutor_name": "Katrina Lorber",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/lorber-katrina-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "1:00 PM - 3:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "4:00 PM - 6:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "1:00 PM - 3:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "BIOL 210 - Human Anatomy & Physiology I (EPE)",
+      "BIOL 211 - Human Anatomy & Physiology II",
+      "NRS 304 Pathophysiology & Pharmacology I",
+      "PSY 100 - Introduction to Psychology",
+      "PSY 213 - Developmental Psychology",
+      "PSY 300 - Psychological Research & Statistical Methods I",
+      "PSY 301 - Psychological Research & Statistical Methods II",
+      "PSY 312 - Social Psychology",
+      "PSY 314 - Behavioral Neuroscience"
+    ]
+  },
+  {
+    "tutor_name": "Juan Luis Gonzalez",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/gonzalez-juan-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "2:00 PM - 6:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "2:00 PM - 5:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "2:30 PM - 4:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "2:00 PM - 5:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "BUS/ART/ARTH 334 - The Business of Art",
+      "CHEM 105 - Introduction to Chemistry",
+      "ESRM 335 - The Beach",
+      "MATH 101 - College Algebra",
+      "MATH 105 - Pre-Calculus (EPE)",
+      "Math 140 - Business Calculus",
+      "MATH 150 - Calculus I",
+      "MATH 151 - Calculus II",
+      "MATH 98 - Pre-Calculus Support",
+      "PHYS 100 - Introduction to Physics",
+      "PHYS 101 - Introduction to Physics II",
+      "PHYS 200 - General Physics I",
+      "PHYS 351 - Mathematical Methods of Physics",
+      "PHYS ASTR 105 - Introduction to the Solar System",
+      "PHYS ASTR 107 - The Stars and Beyond",
+      "PHYS ASTR 390 - Frontiers of Astronomy",
+      "PHYS EMEC 310 - Electronics",
+      "PHYS MATH COMP 345 - Digital Image Processing"
+    ]
+  },
+  {
+    "tutor_name": "Sophie Graves",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/graves-sophie-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "3:30 PM - 8:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "10:00 AM - 1:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "10:00 AM - 1:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "NRS 350 Evidence-based Nursing Practice",
+      "PSY 100 - Introduction to Psychology",
+      "PSY 220 Human Sexual Behavior",
+      "PSY 300 Psychological Research & Statistical Methods I (EPE)",
+      "PSY 301 Psychological Research & Statistical Methods II",
+      "PSY 312 Social Psychology",
+      "PSY 313 Clinical & Abnormal Psychology",
+      "PSY 317 Theories of Personality",
+      "PSY 346 Human Motivation",
+      "SOC 101 Introduction to Sociology"
+    ]
+  },
+  {
+    "tutor_name": "Sam Radwich",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/radwich-samantha-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "4:00 PM - 6:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "4:00 PM - 6:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "4:00 PM - 6:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "MATH 101 - College Algebra",
+      "MATH 97 - Statistics Support",
+      "PSY 300 - Psychological Research & Statistical Methods I (EPE)",
+      "PSY 301 - Psychological Research & Statistical Methods II (EPE)",
+      "SPSS Help"
+    ]
+  },
+  {
+    "tutor_name": "Jeremy Rogers",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/rogers-jeremy-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "6:00 PM - 8:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "1:00 PM - 3:00 PM"
+      },
+      {
+        "day": "Friday",
+        "time": "10:00 AM - 12:00 PM"
+      }
+    ],
+    "supported_courses": [
+      "PSY 300 - Psychological Research & Statistical Methods I (EPE)",
+      "PSY 301 - Psychological Research & Statistical Methods II (EPE)",
+      "PSY 313 - Clinical & Abnormal Psychology",
+      "PSY 317 - Theories of Personality",
+      "PSY 346 - Human Motivation (EPE)",
+      "PSY ART 338 - Psychology of Art and Artists",
+      "SPSS Help"
+    ]
+  },
+  {
+    "tutor_name": "Dylan Wikel",
+    "image_url": "https://www.csuci.edu/learningresourcecenter/images/headshots/currently-active-tutor-headshots/wikel-dylan-headshot.jpg",
+    "schedule": [
+      {
+        "day": "Monday",
+        "time": "3:00 PM - 5:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "time": "3:00 PM - 5:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "time": "5:00 PM - 8:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "time": "6:00 PM - 8:00 PM"
+      },
+      {
+        "day": "Sunday",
+        "time": "5:00 PM - 7:00 PM (Zoom Only)"
+      }
+    ],
+    "supported_courses": [
+      "MATH 101 - College Algebra",
+      "MATH 105 - Pre-Calculus",
+      "MATH 150 - Calculus I",
+      "MATH 97 - Statistics Support",
+      "PSY 100 - Introduction to Psychology",
+      "PSY 213 - Developmental Psychology",
+      "PSY 301 - Psychological Research & Statistical Methods II (EPE)",
+      "PSY 312 - Social Psychology",
+      "PSY 313 - Clinical & Abnormal Psychology",
+      "PSY 314 - Behavioral Neuroscience",
+      "PSY 317 - Theories of Personality",
+      "PSY 346 - Human Motivation"
+    ]
+  }
+]
