@@ -125,7 +125,7 @@
         /* Matches bg-blue-100 for Upcoming Today */
         .absent-legend {
             background-color: #bea1dd;
-            border-color: #7ca5e2;
+            border-color: #4d1680;
         }
 
         /* Matches bg-red-200 opacity 60 for Absent Today */
@@ -193,7 +193,7 @@
             </span>
             <span class="flex items-center">
                 <div class="color-box absent-legend"></div>
-                <strong class="text-red-800">❌ Absent Today</strong>
+                <strong class="text-red-800">🚫 Absent Today</strong>
             </span>
         </div>
 
@@ -522,7 +522,7 @@
         * Maps the status color and absence status to a correlating emoji (with blue square for accessibility).
         */
         function getStatusEmoji(statusColor, isAbsent) {
-            if (isAbsent) return '❌'; // Red X for Absent Today
+            if (isAbsent) return '🚫'; // Circle crossed out for Absent Today
             switch (statusColor) {
                 case 'green':
                     return '🟢'; // Green Circle for Available Now
@@ -541,39 +541,33 @@
         // ==========================================================
 
         /**
-         * Formats the schedule time string, applying magenta color to text after the time block
-         * if the string contains "(Zoom Only)", "in EOP", and "in BCC".
+         * Formats the schedule time string, applying magenta color and bold styling 
+         * to any text that appears *after* the main AM/PM time block.
          */
         function formatScheduleTimeWithMagenta(timeString) {
-            const targetText = timeString.toLowerCase();
+            if (!timeString || timeString === 'N/A') {
+                return 'N/A';
+            }
 
-            // 1. Check for all three conditions (case-insensitive)
-            const hasZoom = targetText.includes("(zoom only)");
-            const hasEOP = targetText.includes("in eop");
-            const hasBCC = targetText.includes("in bcc");
+            // Regex to capture the time block ending in AM or PM (Group 1) 
+            // and everything that follows it, including spaces (Group 2).
+            const timeMatch = timeString.match(/^(.*(?:AM|PM))(\s.*)?$/i);
 
-            if (hasZoom && hasEOP && hasBCC) {
-                // 2. Split the string by the first occurrence of " - "
-                // The schedule time is typically "START TIME - STOP TIME DETAILS"
-                const parts = timeString.split(' - ');
+            if (timeMatch) {
+                const timeBlock = timeMatch[1].trim(); 
+                const optionalNote = timeMatch[2] ? timeMatch[2].trim() : '';
 
-                if (parts.length >= 2) {
-                    // The time block is the first part (e.g., "1:00 PM").
-                    const timeBlock = parts[0];
-
-                    // The rest of the string is the optional details. Rejoin the remaining parts
-                    // in case the description itself contains " - "
-                    const optionalDetails = parts.slice(1).join(' - ');
-
-                    // 3. Wrap the optional details in the magenta span
-                    const coloredDetails = `<span class="text-magenta-bold">${optionalDetails}</span>`;
-
-                    // 4. Rejoin the full string with the colored details
-                    return `${timeBlock} - ${coloredDetails}`;
+                if (optionalNote) {
+                    // Wrap the optional text in the magenta class
+                    const magentaText = `<span class="text-magenta-bold">${optionalNote}</span>`;
+                    // Rejoin the main time block and the colored note
+                    return `${timeBlock} ${magentaText}`;
+                } else {
+                    return timeBlock;
                 }
             }
 
-            // If conditions are not met or parsing failed, return the original string
+            // Fallback: If the string doesn't contain a standard time format, return it as is.
             return timeString;
         }
 
@@ -794,7 +788,7 @@
                 image_url: tutorImageMap[name] || '', // Use the image from the map
                 schedule: [{
                     day: todayName, // Always current day
-                    time: `${startTime} - ${stopTime} (Temp Shift)` // Mark it as temporary
+                    time: `${startTime} - ${stopTime}` // Mark it as temporary
                 }],
                 supported_courses: coursesHidden.split(',').map(c => c.trim()).filter(c => c.length > 0)
             };
@@ -1304,10 +1298,32 @@
 
 
                     // --- 3. CREATE CARD CONTENT ---
-                    
+
                     const tutorShiftTimeRaw = tutor.schedule.find(s => s.day === day)?.time || 'N/A';
                     // Format the time string conditionally
                     const tutorShiftTimeFormatted = formatScheduleTimeWithMagenta(tutorShiftTimeRaw);
+
+                    // START: New Tag Logic
+                    const isTempShift = tutorShiftTimeRaw.includes('(Temp Shift)');
+                    let tagHtml = '';
+
+                    // 1. Create Absent Tag (highest priority tag)
+                    if (isAbsentAndToday) {
+                        tagHtml += `
+                    <span class="ml-2 px-2 py-0.5 inline-block text-xs font-semibold rounded-full bg-violet-800 text-white leading-none">
+                            ABSENT
+                        </span>
+                        `;
+                    }
+                    // 2. Create Temp Shift Tag (only if it's the current day and not absent)
+                    else if (isToday && isTempShift) {
+                        tagHtml += `
+                    <span class="ml-2 px-2 py-0.5 inline-block text-xs font-semibold rounded-full bg-teal-600 text-white leading-none">
+                            TEMP SHIFT
+                        </span>
+                        `;
+                    }
+                    // END: New Tag Logic
 
                     // Container for Name, Image, and Time (using Flexbox to position name/image side-by-side)
                     const headerContent = document.createElement('div');
@@ -1316,8 +1332,11 @@
                     // Tutor Name & Time Info (on the left)
                     const infoDiv = document.createElement('div');
                     infoDiv.innerHTML = `
+                    <div class="flex items-center"> 
                         <p class="font-bold text-gray-900">${tutor.tutor_name}</p>
-                        <p class="text-sm text-gray-700">${tutorShiftTime}</p>
+                        ${tagHtml}
+                    </div>
+                    <p class="text-sm text-gray-700">${tutorShiftTimeFormatted}</p>
                     `;
                     headerContent.appendChild(infoDiv);
 
