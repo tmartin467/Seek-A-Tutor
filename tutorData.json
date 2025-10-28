@@ -134,7 +134,7 @@
       "DATA 200 - Introduction to Data Science",
       "ECON 110 - Principles of Microeconomics",
       "MATH 201 - Elementary Statistics (EPE)",
-      "MATH/PSY 202 - Biostatistics (EPE)",
+      "MATH PSY 202 - Biostatistics (EPE)",
       "R Help"
     ]
   },
@@ -1648,7 +1648,9 @@
       "PSY 313 - Clinical & Abnormal Psychology",
       "PSY 314 - Behavioral Neuroscience",
       "PSY 317 - Theories of Personality",
+      "PSY 318 - Learning, Cognition, & Perception",
       "PSY 346 - Human Motivation"
+    
     ]
   }
 ]
