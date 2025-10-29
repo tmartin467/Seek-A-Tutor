@@ -554,7 +554,7 @@
             const timeMatch = timeString.match(/^(.*(?:AM|PM))(\s.*)?$/i);
 
             if (timeMatch) {
-                const timeBlock = timeMatch[1].trim(); 
+                const timeBlock = timeMatch[1].trim();
                 const optionalNote = timeMatch[2] ? timeMatch[2].trim() : '';
 
                 if (optionalNote) {
@@ -1010,6 +1010,12 @@
             let statusText = 'Not Available';
             let statusColor = 'red'; // Default to red
 
+            // --- TRACKING VARIABLES ---
+            let latestShiftEndTimeMs = -1; // Tracks the absolute end time of the last shift today
+            let hasUpcomingShift = false; // Tracks if any shift is blue
+            let hasFutureShift = false; // <--- NEW: Flag to check if ANY shift is still in the future
+            // ----------------------------
+
             // Find all shifts for the current day
             const shiftsToday = tutor.schedule.filter(s => s.day === currentDayName);
 
@@ -1074,7 +1080,23 @@
 
                 // 3. Not Available (Red) - default, or if the shift ended recently (or for all shifts not in the above categories)
                 // If the only shifts were past shifts, the default 'Not Available' is fine.
+                
             }
+
+            // --- FINAL CHECK AFTER EXAMINING ALL SHIFTS ---
+            // If the status is NOT green, yellow, or blue, it falls back to the default 'red'.
+            // The default status is 'Not Available' / 'red'.
+            // This now correctly captures tutors whose shifts are all in the past (already worked)
+            // BECAUSE the 'Upcoming Today' check (blue) only applied if timeUntilStart was > 0.
+            
+            // To be more explicit, you could change the status/text for a past shift:
+            if (!hasFutureShift && statusColor === 'red') {
+                 statusText = 'Shift Completed for Today';
+            }
+            // Note: The status name remains 'Not Available' for sorting purposes (Priority Score 4),
+            // but the statusText is more accurate for the user.
+
+
 
             // If we checked all shifts and the status is still the default 'Not Available',
             // or if the shift ended recently, we confirm the red status.
@@ -1258,8 +1280,7 @@
                     const isAbsentAndToday = isToday && absentTutors.has(tutor.tutor_name.toLowerCase());
 
                     // --- 2. CREATE CARD CONTAINER & APPLY COLOR BOX STYLING (NEW) ---
-                    const tutorCard = document.createElement('div');
-                    const tutorShiftTime = tutor.schedule.find(s => s.day === day)?.time || 'N/A';
+                    const tutorCard = document.createElement('div');                 
 
 
                     let baseClasses = 'tutor-card p-3 mb-3 rounded-lg shadow-md transition duration-300 relative';
@@ -1299,12 +1320,20 @@
 
                     // --- 3. CREATE CARD CONTENT ---
 
-                    const tutorShiftTimeRaw = tutor.schedule.find(s => s.day === day)?.time || 'N/A';
-                    // Format the time string conditionally
-                    const tutorShiftTimeFormatted = formatScheduleTimeWithMagenta(tutorShiftTimeRaw);
+                    // NEW LOGIC: Find ALL shifts for the current day being rendered
+                    const tutorShiftsToday = tutor.schedule.filter(s => s.day === day);
+                    
+                    // 1. Join all shift time strings into one raw line using ' | ' as a separator
+                    const aggregatedShiftsRaw = tutorShiftsToday.map(s => s.time).join(' | ');
 
-                    // START: New Tag Logic
-                    const isTempShift = tutorShiftTimeRaw.includes('(Temp Shift)');
+                    // 2. Use a final variable for the raw, aggregated time string
+                    const finalShiftTimeRaw = aggregatedShiftsRaw || 'N/A'; 
+
+                    // 3. Format the full string, applying magenta styling to any notes
+                    const tutorShiftTimeFormatted = formatScheduleTimeWithMagenta(finalShiftTimeRaw);
+
+                    // Determine if the *entire aggregated shift string* contains a temp shift flag
+                    const isTempShift = finalShiftTimeRaw.includes('(Temp Shift)');
                     let tagHtml = '';
 
                     // 1. Create Absent Tag (highest priority tag)
