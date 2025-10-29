@@ -646,6 +646,8 @@
 
         /**
          * Saves the current list of absent tutors along with today's date to browser's localStorage.
+         *  / Note: This function doesn't update any database, that's why it's only updating absent tutor's
+         *  on your own browser. Need to figure out how to update on yours and others.
          */
         function saveAbsentTutorsToStorage() {
             const todayDate = getTodayDateString();
@@ -788,7 +790,7 @@
                 image_url: tutorImageMap[name] || '', // Use the image from the map
                 schedule: [{
                     day: todayName, // Always current day
-                    time: `${startTime} - ${stopTime}` // Mark it as temporary
+                    time: `${startTime} - ${stopTime} (Temp Shift)` // Mark it as temporary
                 }],
                 supported_courses: coursesHidden.split(',').map(c => c.trim()).filter(c => c.length > 0)
             };
@@ -997,115 +999,104 @@
         // 2. STATUS CALCULATION
         // ==========================================================
 
-        /**
-         * Calculates the tutor's current status for the day.
-         * @returns {{status: string, statusText: string, statusColor: string}}
-         */
-        function getTutorStatus(tutor) {
-            const now = new Date();
-            const currentDayName = now.toLocaleDateString('en-US', {
-                weekday: 'long'
-            });
-            let status = 'Not Available';
-            let statusText = 'Not Available';
-            let statusColor = 'red'; // Default to red
+      /**
+ * Calculates the tutor's current status for the day.
+ * @returns {{status: string, statusText: string, statusColor: string}}
+ */
+function getTutorStatus(tutor) {
+    const now = new Date();
+    const currentDayName = now.toLocaleDateString('en-US', {
+        weekday: 'long'
+    });
+    let status = 'Not Available';
+    let statusText = 'Not Available';
+    let statusColor = 'red'; // Default to red
 
-            // --- TRACKING VARIABLES ---
-            let latestShiftEndTimeMs = -1; // Tracks the absolute end time of the last shift today
-            let hasUpcomingShift = false; // Tracks if any shift is blue
-            let hasFutureShift = false; // <--- NEW: Flag to check if ANY shift is still in the future
-            // ----------------------------
+    // --- TRACKING VARIABLES ---
+    let isCurrentlyActive = false;
+    let hasUpcomingShift = false; // Tracks if ANY shift is still in the future (no matter how far away)
+    // ----------------------------
 
-            // Find all shifts for the current day
-            const shiftsToday = tutor.schedule.filter(s => s.day === currentDayName);
+    // Find all shifts for the current day
+    const shiftsToday = tutor.schedule.filter(s => s.day === currentDayName);
 
-            if (shiftsToday.length === 0) {
-                // If no shifts today, they are Not Available (default is fine)
-                return {
-                    status,
-                    statusText,
-                    statusColor
-                };
+    if (shiftsToday.length === 0) {
+        return {
+            status,
+            statusText,
+            statusColor
+        };
+    }
+
+    for (const shift of shiftsToday) {
+        const [startTimeStr, stopTimeStr] = shift.time.split(' - ').map(t => t.trim());
+        if (!stopTimeStr) continue;
+
+        // Strip Zoom/Temp notes for time parsing
+        const parsedStopTimeStr = stopTimeStr.replace(/\s*\(.*\)/, '');
+
+        const startTime = createDateFromTime(startTimeStr, now);
+        const stopTime = createDateFromTime(parsedStopTimeStr, now); 
+
+        if (!startTime || !stopTime) continue;
+
+        const MS_IN_MINUTE = 60000;
+        const NOW_MS = now.getTime();
+
+        const timeUntilStart = startTime.getTime() - NOW_MS;
+        const timeUntilEnd = stopTime.getTime() - NOW_MS;
+
+        // 1. Available Now (Green)
+        if (timeUntilStart <= 0 && timeUntilEnd >= 0) {
+            isCurrentlyActive = true;
+            status = 'Available Now';
+            statusText = `Available until ${parsedStopTimeStr}`;
+            statusColor = 'green';
+
+            // Check for Clocking Out Soon (Yellow) - within 15 minutes
+            if (timeUntilEnd < 15 * MS_IN_MINUTE) {
+                status = 'Clocking Out Soon';
+                statusText = `Clocking Out at ${parsedStopTimeStr}`;
+                statusColor = 'yellow';
             }
-
-            // Check if any shift is active, upcoming, or ending soon
-            for (const shift of shiftsToday) {
-                const [startTimeStr, stopTimeStr] = shift.time.split(' - ').map(t => t.trim());
-                if (!stopTimeStr) continue; // Skip bad data
-
-                const startTime = createDateFromTime(startTimeStr, now);
-                const stopTime = createDateFromTime(stopTimeStr.replace(/\s*\(.*\)/, ''), now); // Strip Zoom/Temp notes for time parsing
-
-                if (!startTime || !stopTime) continue; // Skip if time parsing fails
-
-                // Define time constants in minutes
-                const MS_IN_MINUTE = 60000;
-                const NOW_MS = now.getTime();
-
-                // Time difference in milliseconds
-                const timeUntilStart = startTime.getTime() - NOW_MS;
-                const timeUntilEnd = stopTime.getTime() - NOW_MS;
-                // const timeSinceEnd = NOW_MS - stopTime.getTime(); // Not needed for current logic
-
-                // 1. Available Now (Green)
-                if (timeUntilStart <= 0 && timeUntilEnd >= 0) {
-                    // It's currently within the shift
-                    status = 'Available Now';
-                    statusText = `Available until ${stopTimeStr.split('(')[0].trim()}`;
-                    statusColor = 'green';
-
-                    // Check for Clocking Out Soon (Yellow) - within 15 minutes of the end time
-                    if (timeUntilEnd < 15 * MS_IN_MINUTE) {
-                        status = 'Clocking Out Soon';
-                        statusText = `Clocking Out at ${stopTimeStr.split('(')[0].trim()}`;
-                        statusColor = 'yellow';
-                    }
-                    // Since the status is "Available Now" or "Clocking Out Soon", we can stop checking other shifts
-                    return {
-                        status,
-                        statusText,
-                        statusColor
-                    };
-                }
-
-                // 2. Upcoming Today (Blue) - if the shift starts within the next 2 hours
-                if (timeUntilStart > 0 && timeUntilStart <= 120 * MS_IN_MINUTE) {
-                    if (statusColor !== 'green' && statusColor !== 'yellow') {
-                        status = 'Upcoming Today';
-                        statusText = `Starting at ${startTimeStr.split('(')[0].trim()}`;
-                        statusColor = 'blue';
-                        // Don't return yet, as a later shift might be 'Available Now'
-                    }
-                }
-
-                // 3. Not Available (Red) - default, or if the shift ended recently (or for all shifts not in the above categories)
-                // If the only shifts were past shifts, the default 'Not Available' is fine.
-                
-            }
-
-            // --- FINAL CHECK AFTER EXAMINING ALL SHIFTS ---
-            // If the status is NOT green, yellow, or blue, it falls back to the default 'red'.
-            // The default status is 'Not Available' / 'red'.
-            // This now correctly captures tutors whose shifts are all in the past (already worked)
-            // BECAUSE the 'Upcoming Today' check (blue) only applied if timeUntilStart was > 0.
-            
-            // To be more explicit, you could change the status/text for a past shift:
-            if (!hasFutureShift && statusColor === 'red') {
-                 statusText = 'Shift Completed for Today';
-            }
-            // Note: The status name remains 'Not Available' for sorting purposes (Priority Score 4),
-            // but the statusText is more accurate for the user.
-
-
-
-            // If we checked all shifts and the status is still the default 'Not Available',
-            // or if the shift ended recently, we confirm the red status.
+            // Since the status is active, we return immediately with the highest priority status.
             return {
                 status,
                 statusText,
                 statusColor
             };
         }
+
+        // 2. Track if any shift is upcoming (no time constraint)
+        if (timeUntilStart > 0) {
+            hasUpcomingShift = true; // Flag any future shift
+        }
+    }
+
+    // --- FINAL CHECK AFTER EXAMINING ALL SHIFTS ---
+    
+    // If a shift is upcoming (no matter how far away) AND no shift is currently active (checked by isCurrentlyActive flag, 
+    // though the early return handles the active state):
+    if (hasUpcomingShift && !isCurrentlyActive) {
+        // Set the status to Blue (Priority 3) for all future shifts today
+        status = 'Upcoming Today';
+        statusText = 'Scheduled to start later today'; // Generic text for upcoming shifts
+        statusColor = 'blue';
+        return { status, statusText, statusColor };
+    }
+
+    // If we reach this point, no shifts are active and no shifts are in the future.
+    // This means all shifts have been completed for the day.
+    status = 'Not Available';
+    statusText = 'Shift Completed for Today';
+    statusColor = 'red';
+
+    return {
+        status,
+        statusText,
+        statusColor
+    };
+}
 
 
         // ==========================================================
